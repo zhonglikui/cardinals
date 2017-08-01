@@ -4,16 +4,18 @@ import java.io.Serializable;
 
 /**
  * Created by zhong on 2017/6/15.
+ * 手机上音乐的数据模型
  */
 
+
 public class MusicInfo implements Serializable {
-    String title;
-    String artist;
-    String path;
-    String type;
-    String album;
-    long duration;
-    int size;
+    private String title;
+    private String artist;
+    private String path;
+    private String type;
+    private String album;
+    private long duration;
+    private int size;
 
     public String getTitle() {
         return title;

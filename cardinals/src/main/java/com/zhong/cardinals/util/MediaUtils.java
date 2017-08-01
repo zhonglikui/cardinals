@@ -24,7 +24,7 @@ import java.util.List;
 
 public class MediaUtils {
     /**
-     * 获取手机上所有的视屏
+     * 获取手机上所有的视频
      */
     public static List<VideoInfo> getVideos(Context context, OnVideoListener listener) {
         List<VideoInfo> listAll = new ArrayList<>();
@@ -128,7 +128,7 @@ public class MediaUtils {
     }
 
     /**
-     * 利用ContentProvider扫描手机中的图片，此方法在运行在子线程中
+     * 获取手机上所有的图片
      */
     public static List<ImageInfo> getImages(Context context) {
         List<ImageInfo> imageInfos = new ArrayList<>();
@@ -168,6 +168,12 @@ public class MediaUtils {
 
     }
 
+    /**
+     * 获取手机上所有的音乐
+     *
+     * @param mContext
+     * @return
+     */
     public static List<MusicInfo> getMusic(Context mContext) {
         long time1 = System.currentTimeMillis();
         List<MusicInfo> musicList = new ArrayList<>();

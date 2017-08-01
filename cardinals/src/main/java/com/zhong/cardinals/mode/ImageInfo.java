@@ -2,7 +2,9 @@ package com.zhong.cardinals.mode;
 
 import java.io.Serializable;
 
-
+/**
+ * 手机上图片的数据模型
+ */
 public class ImageInfo implements Serializable {
     private long imageId;
     private String imagePath;

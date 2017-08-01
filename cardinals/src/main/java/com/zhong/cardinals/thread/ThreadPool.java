@@ -2,7 +2,6 @@ package com.zhong.cardinals.thread;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 
 /**
  * Created by zhong on 2017/3/23.
@@ -11,7 +10,6 @@ import java.util.concurrent.ScheduledExecutorService;
 
 public class ThreadPool {
     private static ExecutorService cachedThreadPool;
-    private static ScheduledExecutorService scheduler;
 
     private ThreadPool() {
     }
@@ -23,12 +21,4 @@ public class ThreadPool {
         }
         return cachedThreadPool;
     }
-
-   /* public static ScheduledExecutorService getScheduledThreadPool() {
-
-        if (scheduler == null) {
-            scheduler = Executors.newScheduledThreadPool(1);
-        }
-        return scheduler;
-    }*/
 }

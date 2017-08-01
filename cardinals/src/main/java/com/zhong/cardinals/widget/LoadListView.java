@@ -13,6 +13,7 @@ import com.zhong.cardinals.R;
 
 /**
  * Created by zhong on 2017/3/23.
+ * 具有加载更多功能的ListView
  */
 public class LoadListView extends ListView implements AbsListView.OnScrollListener {
     View footer;// 底部布局；

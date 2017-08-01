@@ -2,6 +2,7 @@ package com.zhong.cardinals.security;
 
 /**
  * Created by zhong on 2016/11/16.
+ * 所有加/解密方法都需要实现此接口以保证调用方式统一
  */
 
 public interface Encrypt {

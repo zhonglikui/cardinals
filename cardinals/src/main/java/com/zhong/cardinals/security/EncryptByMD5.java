@@ -21,6 +21,10 @@ public class EncryptByMD5 implements Encrypt {
         return plainText;
     }
 
+    /**
+     * @param cipherText 被加密的字符串
+     * @return
+     */
     @Override
     public String decrypt(String cipherText) {
         return cipherText;

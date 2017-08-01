@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by zhong on 2015/10/30.
+ * BaseAdapter的父类
  */
 public abstract class BaseListAdapter<T> extends BaseAdapter {
 

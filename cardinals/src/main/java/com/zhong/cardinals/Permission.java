@@ -9,6 +9,7 @@ import com.zhong.cardinals.util.Logger;
 
 /**
  * Created by zhong on 2017/6/15.
+ * 动态权限相关
  */
 
 public class Permission {

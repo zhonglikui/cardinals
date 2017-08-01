@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 
 /**
  * Created by zhong on 2017/7/28.
+ * 自动获取短信验证码
  */
 
 public class SMSObserver extends ContentObserver {
@@ -25,7 +26,7 @@ public class SMSObserver extends ContentObserver {
      * Creates a content observer.
      *
      * @param handler The handler to run {@link #onChange} on, or null if none.
-     * @Param codeLength The length of the verification code
+     * @param  codeLength The length of the verification code
      */
     public SMSObserver(Handler handler, int codeLength) {
         super(handler);

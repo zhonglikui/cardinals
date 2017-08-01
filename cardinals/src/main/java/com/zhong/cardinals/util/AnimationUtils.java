@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by zhong on 2017/3/27.
+ * 动画效果工具集
  */
 
 public class AnimationUtils {

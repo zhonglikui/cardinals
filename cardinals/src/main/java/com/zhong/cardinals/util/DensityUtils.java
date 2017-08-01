@@ -5,7 +5,7 @@ import android.util.TypedValue;
 
 /**
  * Created by zhong on 2017/2/9.
- * 单位转换的工具类
+ * 屏幕显示相关单位转换的工具类
  */
 
 public class DensityUtils {

@@ -4,6 +4,7 @@ import java.io.File;
 
 /**
  * Created by zhong on 2017/2/9.
+ * umeng分享数据模型
  */
 
 public class Share {

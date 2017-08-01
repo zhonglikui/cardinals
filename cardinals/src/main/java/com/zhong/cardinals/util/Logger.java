@@ -12,7 +12,7 @@ import com.zhong.cardinals.App;
 public class Logger {
 
     private static final String TAG = "cardinals";
-    public static boolean isDebug = App.getInstance().isDebug();
+    private static boolean isDebug = App.getInstance().isDebug();
 
     public static void i(String msg) {
         if (isDebug) {
@@ -64,11 +64,4 @@ public class Logger {
         }
     }
 
-    public static boolean isDebug() {
-        return isDebug;
-    }
-
-    public static void setIsDebug(boolean isDebug) {
-        Logger.isDebug = isDebug;
-    }
 }

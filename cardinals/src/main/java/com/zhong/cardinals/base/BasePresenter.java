@@ -5,10 +5,11 @@ import java.lang.ref.WeakReference;
 
 /**
  * Created by zhong on 2017/3/10.
+ * MVP模式中Presenter的父类
  */
 
 public abstract class BasePresenter<T> {
-    protected Reference<T> viewRef;//view接口类型的弱引用
+    private Reference<T> viewRef;//view接口类型的弱引用
 
     public void attachView(T view) {
         viewRef = new WeakReference<T>(view);//建立关联

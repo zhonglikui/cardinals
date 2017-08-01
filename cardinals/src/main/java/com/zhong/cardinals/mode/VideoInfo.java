@@ -2,6 +2,7 @@ package com.zhong.cardinals.mode;
 
 /**
  * Created by zhong on 2017/4/17.
+ * 手机上视频的数据模型
  */
 
 public class VideoInfo {

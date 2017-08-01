@@ -2,8 +2,6 @@ package com.zhong.cardinals.util;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -126,19 +124,6 @@ public class DevicesUtil {
     }
 
 
-    public static String getApplicationMetadata(Context context, String metaDataKey) {
-        ApplicationInfo info;
-        try {
-            PackageManager pm = context.getPackageManager();
-
-            info = pm.getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
-
-            return String.valueOf(info.metaData.get(metaDataKey));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     /**
      * 获取手机的唯一识别码
@@ -148,7 +133,6 @@ public class DevicesUtil {
      */
     public static String getIMEI(Context context) {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        Logger.i("IMEI=" + tm.getDeviceId());
         return tm.getDeviceId();
     }
 

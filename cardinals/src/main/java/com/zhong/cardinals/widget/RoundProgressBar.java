@@ -15,6 +15,7 @@ import com.zhong.cardinals.R;
 
 /**
  * Created by zhong on 2017/7/14.
+ * 圆形进度条
  */
 
 public class RoundProgressBar extends View {
@@ -137,7 +138,7 @@ public class RoundProgressBar extends View {
     /**
      * 获取进度.需要同步
      *
-     * @return
+     * @return 获取当前进度
      */
     public synchronized int getProgress() {
         return progress;

@@ -6,6 +6,7 @@ import android.renderscript.RSRuntimeException;
 
 /**
  * Created by zhong on 2017/4/26.
+ * 对bitmap进行模糊处理
  */
 
 public class Blur {

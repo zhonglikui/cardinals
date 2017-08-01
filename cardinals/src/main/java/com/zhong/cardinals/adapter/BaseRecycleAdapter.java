@@ -1,6 +1,6 @@
 package com.zhong.cardinals.adapter;
 
-import android.content.Context;
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,21 +11,22 @@ import java.util.List;
 
 /**
  * Created by zhong on 2017/4/1.
+ * RecycleView的Adapter使用的父类
  */
 
 public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<RecycleViewHolder> {
-    protected Context mContext;
+    protected Activity mActivity;
     protected int mLayoutId;
     protected List<T> mDatas;
     protected LayoutInflater mInflater;
     protected onItemClickListener onItemClickListener;
     protected onItemLongClickListener onItemLongClickListener;
 
-    public BaseRecycleAdapter(Context context, int layoutId) {
-        this.mContext = context;
+    public BaseRecycleAdapter(Activity activity, int layoutId) {
+        this.mActivity = activity;
         this.mLayoutId = layoutId;
 
-        mInflater = LayoutInflater.from(mContext);
+        mInflater = LayoutInflater.from(activity);
         mDatas = new ArrayList<>();
     }
 
@@ -35,6 +36,10 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<Recycle
     public List<T> getAll() {
 
         return mDatas;
+    }
+
+    public Activity getActivity() {
+        return mActivity;
     }
 
     public void addList(List<T> list) {
@@ -111,7 +116,7 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<Recycle
 
     @Override
     public RecycleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RecycleViewHolder viewHolder = RecycleViewHolder.get(mContext, parent, mLayoutId);
+        RecycleViewHolder viewHolder = RecycleViewHolder.get(mActivity, parent, mLayoutId);
         return viewHolder;
     }
 

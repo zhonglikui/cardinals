@@ -18,6 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by zhong on 2017/3/10.
+ * Retrofit封装的创建工具集
  */
 
 public class NetWorkClient {

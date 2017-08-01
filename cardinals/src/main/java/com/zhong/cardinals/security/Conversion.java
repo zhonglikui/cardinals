@@ -2,6 +2,7 @@ package com.zhong.cardinals.security;
 
 /**
  * Created by zhong on 2016/11/17.
+ * 数据加密使用的转换工具
  */
 
 public class Conversion {

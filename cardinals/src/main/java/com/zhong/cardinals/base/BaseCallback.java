@@ -6,6 +6,7 @@ import retrofit2.Response;
 
 /**
  * Created by zhong on 2017/3/28.
+ * Retrofit的回调的封装形式
  */
 
 public abstract class BaseCallback<M> implements Callback<M> {
