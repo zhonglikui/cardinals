@@ -5,9 +5,11 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.zhong.cardinals.App;
 import com.zhong.cardinals.security.Encrypt;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -182,6 +184,32 @@ public class SPUtil {
     public static void putObject(String key, Object object) {
         if (object != null) {
             putString(key, new Gson().toJson(object));
+        }
+    }
+
+    /**
+     * @param key  要保存的List数据的key
+     * @param list 需要保存的List数据
+     * @param <T>
+     */
+    public static <T> void putList(String key, List<T> list) {
+        if (list != null) {
+            putString(key, new Gson().toJson(list));
+        }
+    }
+
+    /**
+     * @param key 获取list的key
+     * @param <T>
+     * @return t类型的list集合
+     */
+    public static <T> List<T> getList(String key) {
+        String str = getString(key);
+        if (!TextUtils.isEmpty(str)) {
+            return new Gson().fromJson(str, new TypeToken<List<T>>() {
+            }.getType());
+        } else {
+            return null;
         }
     }
 

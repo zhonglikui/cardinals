@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +24,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
     public BaseListAdapter(Activity activity, int itemViewId) {
         this.mActivity = activity;
         this.itemViewId = itemViewId;
+        mList = new ArrayList<>();
     }
 
     /**
@@ -41,12 +43,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
      */
     public void addListData(List<T> list) {
         if (list != null) {
-            if (mList != null) {
-                mList.addAll(list);
-            } else {
-                mList = list;
-            }
-
+            mList.addAll(list);
             notifyDataSetChanged();
         }
 

@@ -10,7 +10,7 @@ import com.zhong.cardinals.net.NetWorkClient;
  */
 
 public class BaseApplication extends Application {
-    private static final String HOST = "http://";
+    private static final String HOST = "http://likui.me";
 
     @Override
     public void onCreate() {
