@@ -2,7 +2,6 @@ package com.zhong.cardinals.adapter;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -14,115 +13,86 @@ import java.util.List;
  * RecycleView的Adapter使用的父类
  */
 
-public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<RecycleViewHolder> {
-    protected Activity mActivity;
-    protected int mLayoutId;
-    protected List<T> mDatas;
-    protected LayoutInflater mInflater;
+public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<RecycleViewHolder> implements ParentAdapter<T> {
     protected onItemClickListener onItemClickListener;
     protected onItemLongClickListener onItemLongClickListener;
+    private Activity mActivity;
+    private int mLayoutId;
+    private List<T> mList;
 
     public BaseRecycleAdapter(Activity activity, int layoutId) {
         this.mActivity = activity;
         this.mLayoutId = layoutId;
-
-        mInflater = LayoutInflater.from(activity);
-        mDatas = new ArrayList<>();
+        this.mList = new ArrayList<>();
     }
 
-    /**
-     * @return 返回Adapter中的List数据
-     */
-    public List<T> getAll() {
-
-        return mDatas;
-    }
-
+    @Override
     public Activity getActivity() {
         return mActivity;
     }
 
+    @Override
+    public List<T> getListAll() {
+        return mList;
+    }
+
+    @Override
     public void addList(List<T> list) {
         if (list != null) {
-
-            mDatas.addAll(list);
-           /* for (int i = 0; i < mDatas.size(); i++) {
-                //notifyItemChanged(i);
-                notifyItemInserted(i);
-            }*/
+            mList.addAll(list);
             notifyDataSetChanged();
-
         }
-
     }
 
+    @Override
     public void addItem(T item) {
         if (item != null) {
-            mDatas.add(item);
-            notifyItemInserted(mDatas.size() - 1);
+            mList.add(item);
+            notifyItemInserted(mList.size() - 1);
         }
     }
 
-    /**
-     * 向list中的指定位置添加item
-     *
-     * @param index 索引值
-     * @param obj  对象
-     */
-    public void addItem(int index, T obj) {
-        if (obj != null && mDatas != null) {
-            mDatas.add(index, obj);
+    @Override
+    public void addItem(int index, T item) {
+        if (item != null && index >= 0) {
+            mList.add(index, item);
+            notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void removeItem(T item) {
+        if (item != null && !mList.isEmpty()) {
+            mList.remove(item);
             notifyDataSetChanged();
         }
 
     }
 
-    /**
-     * 删除list中的item
-     *
-     * @param obj 待删除的索引值
-     */
-    public void deleteItem(T obj) {
-        if (obj != null && !mDatas.isEmpty()) {
-            mDatas.remove(obj);
-            notifyDataSetChanged();
-        }
-
-    }
-
-    /**
-     * 删除list中指定位置的item
-     *
-     * @param index 索引值
-     */
-    public void deleteItem(int index) {
-        if (!mDatas.isEmpty()) {
-            mDatas.remove(index);
+    @Override
+    public void removeItem(int index) {
+        if (index >= 0 && !mList.isEmpty()) {
+            mList.remove(index);
             notifyItemRemoved(index);
-            notifyItemRangeRemoved(index, mDatas.size());
         }
     }
 
-    /**
-     * 清空list
-     */
+    @Override
     public void clear() {
-        if (mDatas != null) {
-            mDatas.clear();
+        if (!mList.isEmpty()) {
+            mList.clear();
             notifyDataSetChanged();
-
         }
     }
 
     @Override
     public RecycleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RecycleViewHolder viewHolder = RecycleViewHolder.get(mActivity, parent, mLayoutId);
-        return viewHolder;
+        return RecycleViewHolder.get(mActivity, parent, mLayoutId);
     }
 
     @Override
     public void onBindViewHolder(final RecycleViewHolder holder, final int position) {
-        convert(holder.getLayoutPosition(), holder, mDatas.get(position));
+        convert(holder.getLayoutPosition(), holder, mList.get(position));
         //item点击事件
         if (onItemClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -148,15 +118,15 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<Recycle
         }
     }
 
-    public abstract void convert(int position, RecycleViewHolder holder, T t);
+    public abstract void convert(int position, RecycleViewHolder holder, T item);
 
     @Override
     public int getItemCount() {
-        return mDatas.size();
+        return mList.size();
     }
 
     public T getItem(int position) {
-        return mDatas.get(position);
+        return mList.get(position);
     }
 
     public void setOnItemClickListener(onItemClickListener onItemClickListener) {

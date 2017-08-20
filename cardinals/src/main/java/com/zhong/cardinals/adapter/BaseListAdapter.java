@@ -12,10 +12,9 @@ import java.util.List;
  * Created by zhong on 2015/10/30.
  * BaseAdapter的父类
  */
-public abstract class BaseListAdapter<T> extends BaseAdapter {
+public abstract class BaseListAdapter<T> extends BaseAdapter implements ParentAdapter<T> {
 
     public static final int INVALID_ITEM_VIEW_ID = -1;
-    private final int INVALID_INDEX_VALUES = -1;
     private Activity mActivity;
     private List<T> mList;
     private int itemViewId;
@@ -27,99 +26,65 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
         mList = new ArrayList<>();
     }
 
-    /**
-     * 获取调用当前adapter的Context
-     *
-     * @return Activity
-     */
-    protected Activity getActivity() {
+    @Override
+    public Activity getActivity() {
         return mActivity;
     }
 
-    /**
-     * 向ListView中添加数据
-     *
-     * @param list List数据
-     */
-    public void addListData(List<T> list) {
-        if (list != null) {
-            mList.addAll(list);
-            notifyDataSetChanged();
-        }
-
-    }
-
-    /**
-     * 向list中添加item
-     */
-    public void addItem(T obj) {
-        if (obj != null) {
-            mList.add(obj);
-            notifyDataSetChanged();
-        }
-    }
-
-    /**
-     * 向list中的指定位置添加item
-     *
-     * @param index 索引位置
-     * @param obj  单个数据对象
-     */
-    public void addItem(int index, T obj) {
-        if (obj != null && index != INVALID_INDEX_VALUES && mList != null) {
-            mList.add(index, obj);
-            notifyDataSetChanged();
-        }
-
-    }
-
-    /**
-     * 删除list中的item
-     *
-     * @param obj 待删除的数据对象
-     */
-    public void deleteItem(T obj) {
-        if (obj != null && !mList.isEmpty()) {
-            mList.remove(obj);
-            notifyDataSetChanged();
-        }
-
-    }
-
-    /**
-     * 删除list中指定位置的item
-     *
-     * @param index int型的索引值
-     */
-    public void deleteItem(int index) {
-        if (index != INVALID_INDEX_VALUES && !mList.isEmpty()) {
-            mList.remove(index);
-            notifyDataSetChanged();
-        }
-    }
-
-    /**
-     * 清空list
-     */
-    public void clear() {
-        if (mList != null) {
-            mList.clear();
-            notifyDataSetChanged();
-
-        }
-    }
-
-    /**
-     * @return 返回Adapter中的List数据
-     */
-    public List<T> getAll() {
-
+    @Override
+    public List<T> getListAll() {
         return mList;
     }
 
     @Override
+    public void addList(List<T> list) {
+        if (list != null) {
+            mList.addAll(list);
+            notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void addItem(T item) {
+        if (item != null) {
+            mList.add(item);
+            notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void addItem(int index, T item) {
+        if (item != null && index >= 0) {
+            mList.add(index, item);
+        }
+    }
+
+    @Override
+    public void removeItem(T item) {
+        if (item != null && !mList.isEmpty()) {
+            mList.remove(item);
+            notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void removeItem(int index) {
+        if (index >= 0 && !mList.isEmpty()) {
+            mList.remove(index);
+        }
+    }
+
+    @Override
+    public void clear() {
+        if (!mList.isEmpty()) {
+            mList.clear();
+            notifyDataSetChanged();
+        }
+    }
+
+    @Override
     public int getCount() {
-        return mList == null ? 0 : mList.size();
+        return mList.size();
     }
 
     @Override
@@ -136,7 +101,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (itemViewId != INVALID_ITEM_VIEW_ID) {
 
-            ViewHolder holder = ViewHolder.get(mActivity, convertView, itemViewId);
+            ListViewHolder holder = ListViewHolder.get(mActivity, convertView, itemViewId);
             getConverView(position, holder, getItem(position));
             return holder.getConvertView();
         } else {
@@ -144,5 +109,5 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
         }
     }
 
-    protected abstract void getConverView(int position, ViewHolder holder, T item);
+    protected abstract void getConverView(int position, ListViewHolder holder, T item);
 }

@@ -8,17 +8,17 @@ import android.view.View;
  * Created by zhong on 2015/10/12.
  * BaseListAdapter的辅助工具类
  */
-public class ViewHolder {
+class ListViewHolder {
     private final View mConvertView;
     private final SparseArray<View> mViews;
 
     /**
      * 初始化ViewHolder
      *
-     * @param context Context
+     * @param context       Context
      * @param convertViewId item的layout
      */
-    private ViewHolder(Context context, int convertViewId) {
+    private ListViewHolder(Context context, int convertViewId) {
         mViews = new SparseArray<>();
         mConvertView = View.inflate(context, convertViewId, null);
         mConvertView.setTag(this);
@@ -30,11 +30,11 @@ public class ViewHolder {
      * @param convertView layout
      * @return ViewHolder
      */
-    public static ViewHolder get(Context context, View convertView, int converViewId) {
+    static ListViewHolder get(Context context, View convertView, int converViewId) {
         if (convertView == null) {
-            return new ViewHolder(context, converViewId);
+            return new ListViewHolder(context, converViewId);
         } else {
-            return (ViewHolder) convertView.getTag();
+            return (ListViewHolder) convertView.getTag();
         }
     }
 
@@ -42,7 +42,7 @@ public class ViewHolder {
      * 通过控件的id获取相对应的控件
      *
      * @param viewId 需要查找的View的id
-     * @param <T> View的类型
+     * @param <T>    View的类型
      * @return 查找的结果
      */
     public <T extends View> T getView(int viewId) {
@@ -57,7 +57,7 @@ public class ViewHolder {
     /**
      * @return 返回convertView
      */
-    public View getConvertView() {
+    View getConvertView() {
         return mConvertView;
     }
 

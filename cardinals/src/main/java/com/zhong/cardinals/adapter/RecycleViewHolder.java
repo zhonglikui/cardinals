@@ -8,24 +8,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
+ * RecycleView使用的ViewHolder
  * Created by zhong on 2017/4/1.
  */
 
-public class RecycleViewHolder extends RecyclerView.ViewHolder {
+class RecycleViewHolder extends RecyclerView.ViewHolder {
     private SparseArray<View> mViews;
     private View mConvertView;
 
     public RecycleViewHolder(Context context, View itemView, ViewGroup parent) {
         super(itemView);
         mConvertView = itemView;
-        mViews = new SparseArray<View>();
+        mViews = new SparseArray<>();
     }
 
     public static RecycleViewHolder get(Context context, ViewGroup parent, int layoutId) {
 
         View itemView = LayoutInflater.from(context).inflate(layoutId, parent, false);
-        RecycleViewHolder holder = new RecycleViewHolder(context, itemView, parent);
-        return holder;
+        return new RecycleViewHolder(context, itemView, parent);
     }
 
     public <T extends View> T getView(int viewId) {
