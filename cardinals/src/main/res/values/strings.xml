@@ -1,17 +1,18 @@
 <resources>
     <string name="app_name">Cardinals</string>
-    <string name="network_disconnected">network has been disconnected</string>
-    <string name="loading">loading...</string>
-    <string name="str_cancel">@android:string/cancel</string>
-    <string name="str_confirm">@android:string/ok</string>
-    <!--    <string name="permission_audio">Allow Access To Micropone</string>
-        <string name="permission_camera">Allow Access To Camera</string>
-        <string name="permission_camera_audio">Allow Access To Camera And Micropone</string>-->
-    <string name="permission_sd">Allow Access To SD Card</string>
-    <string name="gender">Gender</string>
-    <string name="gender_male">Male</string>
-    <string name="gender_female">Female</string>
-    <string name="photo_album">Photo Album</string>
-    <string name="take_photo">Take Photo</string>
+    <string name="str_confirm">确定</string>
+    <string name="str_cancel">取消</string>
+    <string name="loading">正在加载...</string>
+    <string name="gender">性别</string>
+    <string name="gender_male">男</string>
+    <string name="gender_female">女</string>
+    <string name="photo_album">相册</string>
+    <string name="take_photo">拍照</string>
+    <!--权限-->
+    <string name="permission_sd">请在设置中打开SD卡读写权限</string>
+    <!-- <string name="permission_camera">请在设置中打开摄像头读取权限</string>
+     <string name="permission_audio">请在设置中打开录音权限</string>
+     <string name="permission_camera_audio">请在设置中打开摄像头和录音权限</string>-->
+    <string name="network_disconnected">网络断开</string>
 
 </resources>
