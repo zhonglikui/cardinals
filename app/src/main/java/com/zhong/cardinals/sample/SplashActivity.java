@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.zhong.cardinals.App;
 import com.zhong.cardinals.base.BaseEmptyActivity;
+import com.zhong.cardinals.sample.login.LoginActivity;
 import com.zhong.cardinals.util.Logger;
 import com.zhong.cardinals.util.ToastUtil;
 
@@ -36,10 +37,9 @@ public class SplashActivity extends BaseEmptyActivity {
         App.getInstance().getHandler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
-
             }
         }, INTERVAL_TIME);
     }

@@ -11,6 +11,8 @@ import retrofit2.Response;
  */
 
 public abstract class BaseCallback<T> implements Callback<T> {
+    public abstract void onBefore();
+
     public abstract void onSuccess(T model);
 
     public abstract void onFailure(int code, String msg);
