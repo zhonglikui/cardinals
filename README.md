@@ -1,6 +1,6 @@
-#cardinals
+# cardinals
 cardinals是一个Android快速开发框架,将某些常用功能和第三方库进行封装可以帮你进行快速
-###功能特性
+### 功能特性
 * 提供MvpActivity、MvpFragment、MvpPresenter、MvpView等可以让你可以基于mvp快速开发
 * 提供BaseListAdapter、BaseRecycleAdapter等快速开发
 * 提供手机的图片、音乐、视频查询功能
@@ -12,7 +12,7 @@ cardinals是一个Android快速开发框架,将某些常用功能和第三方库
 * 常用UI控件，如：上拉加载的ListView、不可滑动的ViewPager、和圆形进度条
 * 自动获取短信验证码
 * 集成了Eventbus
-###初始化
+### 初始化
 在`Application`的`onCreate( )`中添加如下代码
 ```
         App.getInstance().init(this);
