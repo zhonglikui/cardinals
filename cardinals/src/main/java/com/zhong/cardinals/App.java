@@ -24,6 +24,10 @@ public class App {
         return Single.instance;
     }
 
+    public void init(Context context) {
+        this.mContext = context;
+        this.isDebug = true;
+    }
     public void init(Context context, boolean isDebug) {
         this.mContext = context;
         this.isDebug = isDebug;

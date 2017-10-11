@@ -144,7 +144,7 @@ public class FrescoManager {
 
                     @Override
                     public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
-                       Logger.i("下载成功："+imageInfo.getWidth()+" ; "+imageInfo.getHeight()+" ; "+imageInfo.getQualityInfo().isOfGoodEnoughQuality());
+                        Logger.i("下载成功：" + imageInfo.getWidth() + " ; " + imageInfo.getHeight() + " ; " + imageInfo.getQualityInfo().isOfGoodEnoughQuality());
                     }
 
                     @Override
@@ -154,12 +154,12 @@ public class FrescoManager {
 
                     @Override
                     public void onIntermediateImageFailed(String id, Throwable throwable) {
-                        Logger.i("IntermediateImageFailed :"+url+" ; "+throwable.getMessage());
+                        Logger.i("IntermediateImageFailed :" + url + " ; " + throwable.getMessage());
                     }
 
                     @Override
                     public void onFailure(String id, Throwable throwable) {
-Logger.i("fail :"+url+" ; "+throwable.getMessage());
+                        Logger.i("fail :" + url + " ; " + throwable.getMessage());
                     }
 
                     @Override
@@ -177,22 +177,22 @@ Logger.i("fail :"+url+" ; "+throwable.getMessage());
 
                     @Override
                     public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
-                       // Logger.i("onFinalImageSet :" + url + " ; " + imageInfo.getQualityInfo().isOfGoodEnoughQuality());
+                        // Logger.i("onFinalImageSet :" + url + " ; " + imageInfo.getQualityInfo().isOfGoodEnoughQuality());
                     }
 
                     @Override
                     public void onIntermediateImageSet(String id, ImageInfo imageInfo) {
-                      //  Logger.i("onIntermediateImageSet :" + url + " ; " + imageInfo.getQualityInfo().isOfGoodEnoughQuality());
+                        //  Logger.i("onIntermediateImageSet :" + url + " ; " + imageInfo.getQualityInfo().isOfGoodEnoughQuality());
                     }
 
                     @Override
                     public void onIntermediateImageFailed(String id, Throwable throwable) {
-                      //  Logger.i("onIntermediateImageFailed :" + url + " ; " + throwable.getMessage());
+                        //  Logger.i("onIntermediateImageFailed :" + url + " ; " + throwable.getMessage());
                     }
 
                     @Override
                     public void onFailure(String id, Throwable throwable) {
-                      //  Logger.i("failure :" + url + " ; " + throwable.getMessage());
+                        //  Logger.i("failure :" + url + " ; " + throwable.getMessage());
                     }
 
                     @Override

@@ -17,7 +17,7 @@ public class BaseApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        App.getInstance().init(this, true);
+        App.getInstance().init(this);
         NetWorkClient.init(HOST);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
     }
