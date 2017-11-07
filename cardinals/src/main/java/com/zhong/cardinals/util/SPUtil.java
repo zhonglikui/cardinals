@@ -5,10 +5,15 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.zhong.cardinals.App;
 import com.zhong.cardinals.security.Encrypt;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -194,7 +199,9 @@ public class SPUtil {
      */
     public static <T> void putList(String key, List<T> list) {
         if (list != null) {
-            putString(key, new Gson().toJson(list));
+            Type listType = new TypeToken<List<T>>() {
+            }.getType();
+            putString(key, new Gson().toJson(list, listType));
         }
     }
 
@@ -203,11 +210,16 @@ public class SPUtil {
      * @param <T>
      * @return t类型的list集合
      */
-    public static <T> List<T> getList(String key) {
+    public static <T> List<T> getList(String key, Class<T> classOfT) {
         String str = getString(key);
         if (!TextUtils.isEmpty(str)) {
-            return new Gson().fromJson(str, new TypeToken<List<T>>() {
-            }.getType());
+            List<T> list = new ArrayList<>();
+            Gson gson = new Gson();
+            JsonArray arry = new JsonParser().parse(str).getAsJsonArray();
+            for (JsonElement jsonElement : arry) {
+                list.add(gson.fromJson(jsonElement, classOfT));
+            }
+            return list;
         } else {
             return null;
         }

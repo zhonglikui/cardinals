@@ -2,15 +2,7 @@ package com.zhong.cardinals.sample.login;
 
 import android.text.TextUtils;
 
-import com.zhong.cardinals.base.BaseCallback;
-import com.zhong.cardinals.base.BaseResponse;
 import com.zhong.cardinals.mvp.MvpPresenter;
-import com.zhong.cardinals.net.NetWorkClient;
-import com.zhong.cardinals.sample.API;
-import com.zhong.cardinals.sample.mode.PasswordLogin;
-import com.zhong.cardinals.sample.mode.UserInfo;
-import com.zhong.cardinals.security.Encrypt;
-import com.zhong.cardinals.security.EncryptByMD5;
 
 /**
  * Created by Mr.zhong on 2017/9/19.
@@ -23,7 +15,9 @@ public class LoginPresenter extends MvpPresenter<LoginView> {
         } else if (TextUtils.isEmpty(password)) {
             getView().isEmptyPassword();
         } else {
-            PasswordLogin passwordLogin = new PasswordLogin();
+            getView().onSuccess(null);
+
+            /*PasswordLogin passwordLogin = new PasswordLogin();
             Encrypt encrypt = new EncryptByMD5();
             passwordLogin.setPassword(encrypt.encrypt(password));
             passwordLogin.setPhone(phoneNumber);
@@ -55,13 +49,15 @@ public class LoginPresenter extends MvpPresenter<LoginView> {
                 @Override
                 public void onFailure(int code, String msg) {
                     getView().onFaile(code, "网络错误");
+                    getView().onSuccess(null);
                 }
 
                 @Override
                 public void onFinish() {
                     getView().closeDialog();
+                    getView().onSuccess(null);
                 }
-            });
+            });*/
         }
     }
 }
