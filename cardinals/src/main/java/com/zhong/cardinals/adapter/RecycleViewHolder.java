@@ -12,7 +12,7 @@ import android.view.ViewGroup;
  * Created by zhong on 2017/4/1.
  */
 
-class RecycleViewHolder extends RecyclerView.ViewHolder {
+public class RecycleViewHolder extends RecyclerView.ViewHolder {
     private SparseArray<View> mViews;
     private View mConvertView;
 

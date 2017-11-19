@@ -14,7 +14,7 @@ public class DensityUtils {
      * dp转px
      *
      * @param context Context对象
-     * @param dpVal 需要被转化的值单位dp
+     * @param dpVal   需要被转化的值单位dp
      * @return 转化后的值单位px
      */
     public static int dp2px(Context context, float dpVal) {
@@ -26,7 +26,7 @@ public class DensityUtils {
      * sp转px
      *
      * @param context Context对象
-     * @param spVal  需要被转化的值单位sp
+     * @param spVal   需要被转化的值单位sp
      * @return 转化后的值单位px
      */
     public static int sp2px(Context context, float spVal) {
@@ -38,7 +38,7 @@ public class DensityUtils {
      * px转dp
      *
      * @param context Context对象
-     * @param pxVal 需要被转化的值，单位px
+     * @param pxVal   需要被转化的值，单位px
      * @return 转化后的值，单位dp
      */
     public static float px2dp(Context context, float pxVal) {
@@ -50,7 +50,7 @@ public class DensityUtils {
      * px转sp
      *
      * @param context Context对象
-     * @param pxVal 需要被转化的值，单位px
+     * @param pxVal   需要被转化的值，单位px
      * @return 转化后的值，单位sp
      */
     public static float px2sp(Context context, float pxVal) {

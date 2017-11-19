@@ -5,24 +5,24 @@ package com.zhong.cardinals.base;
  */
 
 public class BaseResponse<T> {
-    private int retcode = -101;//0
-    private String retmsg;//"success"
+    private int code = -101;
+    private String message;
     private T data;
 
-    public int getRetcode() {
-        return retcode;
+    public int getCode() {
+        return code;
     }
 
-    public void setRetcode(int retcode) {
-        this.retcode = retcode;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public String getRetmsg() {
-        return retmsg;
+    public String getMessage() {
+        return message;
     }
 
-    public void setRetmsg(String retmsg) {
-        this.retmsg = retmsg;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public T getData() {

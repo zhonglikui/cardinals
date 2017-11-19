@@ -25,4 +25,5 @@ interface ParentAdapter<T> {
     void removeItem(int index);
 
     void clear();
+
 }

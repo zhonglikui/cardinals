@@ -178,14 +178,22 @@ public class DialogUtil {
     }
 
     public static void showBottomDialog(final Activity activity, View view) {
-        final AlertDialog dialog = new AlertDialog.Builder(activity).create();
+
+
+        final AlertDialog dialog = new AlertDialog.Builder(activity).setCancelable(true).create();
         dialog.show();
         WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
-        lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        lp.gravity = Gravity.BOTTOM;
+        if (lp != null) {
+
+            lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            lp.gravity = Gravity.BOTTOM;
+            dialog.getWindow().setAttributes(lp);
+        }
         dialog.getWindow().setAttributes(lp);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.setContentView(view);
+
 
     }
 

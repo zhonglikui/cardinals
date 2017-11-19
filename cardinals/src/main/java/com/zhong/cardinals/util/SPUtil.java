@@ -8,11 +8,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
 import com.zhong.cardinals.App;
 import com.zhong.cardinals.security.Encrypt;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -199,9 +197,7 @@ public class SPUtil {
      */
     public static <T> void putList(String key, List<T> list) {
         if (list != null) {
-            Type listType = new TypeToken<List<T>>() {
-            }.getType();
-            putString(key, new Gson().toJson(list, listType));
+            putString(key, new Gson().toJson(list));
         }
     }
 

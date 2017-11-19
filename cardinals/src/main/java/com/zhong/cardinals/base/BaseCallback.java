@@ -1,5 +1,7 @@
 package com.zhong.cardinals.base;
 
+import com.zhong.cardinals.util.Logger;
+
 import java.io.IOException;
 
 import retrofit2.Call;
@@ -11,13 +13,11 @@ import retrofit2.Response;
  */
 
 public abstract class BaseCallback<T> implements Callback<T> {
-    public abstract void onBefore();
 
     public abstract void onSuccess(T model);
 
     public abstract void onFailure(int code, String msg);
 
-    public abstract void onFinish();
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
@@ -28,19 +28,19 @@ public abstract class BaseCallback<T> implements Callback<T> {
                 int code = response.code();
                 String error = response.errorBody().string();
                 onFailure(code, error);
+                Logger.e("response error:" + code + " : " + error);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         }
-        onFinish();
 
     }
 
     @Override
     public void onFailure(Call<T> call, Throwable t) {//没有网络或者数据模型出错之类的
         onFailure(-1, t.getMessage());
-        onFinish();
+        Logger.e("onFailure:" + t.getMessage());
 
     }
 }

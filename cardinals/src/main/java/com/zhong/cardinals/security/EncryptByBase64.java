@@ -10,6 +10,14 @@ import android.util.Base64;
  */
 
 public class EncryptByBase64 implements Encrypt {
+    private int intFlags = Base64.DEFAULT;
+
+    public EncryptByBase64() {
+    }
+
+    public EncryptByBase64(int type) {
+        this.intFlags = type;
+    }
 
 
     @Override
@@ -17,7 +25,7 @@ public class EncryptByBase64 implements Encrypt {
         if (TextUtils.isEmpty(plainText)) {
             return null;
         } else {
-            return Base64.encodeToString(plainText.getBytes(), Base64.URL_SAFE);
+            return Base64.encodeToString(plainText.getBytes(), intFlags);
         }
     }
 
@@ -26,7 +34,7 @@ public class EncryptByBase64 implements Encrypt {
         if (TextUtils.isEmpty(cipherText)) {
             return null;
         } else {
-            return new String(Base64.decode(cipherText.getBytes(), Base64.URL_SAFE));
+            return new String(Base64.decode(cipherText.getBytes(), intFlags));
         }
 
     }

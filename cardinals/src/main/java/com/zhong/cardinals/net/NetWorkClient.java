@@ -1,9 +1,11 @@
 package com.zhong.cardinals.net;
 
+import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
@@ -12,7 +14,11 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import okhttp3.HttpUrl;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -23,12 +29,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetWorkClient {
     private static String HOST;
+    private static OkHttpClient CLIENT;
+    private static List<String> HOSTS;
 
     /**
      * @param host 域名
      */
     public static void init(String host) {
         HOST = host;
+    }
+
+    public static void init(String host, OkHttpClient client, List<String> hosts) {
+        HOST = host;
+        CLIENT = client;
+        HOSTS = hosts;
     }
 
     /**
@@ -51,9 +65,10 @@ public class NetWorkClient {
 
     /**
      * 可以传入域名的方法，适用于应用中有多个域名的请求
-     * @param host  域名
-     * @param serviceClass  接口类型
-     * @param <T>  接口
+     *
+     * @param host         域名
+     * @param serviceClass 接口类型
+     * @param <T>          接口
      * @return 创造成功的接口
      */
     public static <T> T createService(String host, Class<T> serviceClass) {
@@ -70,14 +85,16 @@ public class NetWorkClient {
 
     private static OkHttpClient getOkHttpClient() {
 
-        return new OkHttpClient.Builder()
+
+        return CLIENT != null ? CLIENT : new OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .build();
 
     }
-    public static OkHttpClient getOkhttpClient(){
+
+    public static OkHttpClient getOkhttpClient() {
         X509TrustManager xtm = new X509TrustManager() {
             @Override
             public void checkClientTrusted(X509Certificate[] chain, String authType) {
@@ -93,6 +110,8 @@ public class NetWorkClient {
                 return x509Certificates;
             }
         };
+
+
         SSLContext sslContext = null;
         try {
             sslContext = SSLContext.getInstance("SSL");
@@ -113,9 +132,24 @@ public class NetWorkClient {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 // .addInterceptor(interceptor)
                 .sslSocketFactory(sslContext.getSocketFactory())
+                //.protocols(Collections.singletonList(Protocol.HTTP_2))
                 .hostnameVerifier(DO_NOT_VERIFY)
                 .build();
         return okHttpClient;
+    }
+
+    public class DynamicBaseUrlInterceptor implements Interceptor {
+        private void setHost(String host) {
+            HOST = host;
+        }
+
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request originalRequest = chain.request();
+            HttpUrl newUrl = originalRequest.url().newBuilder().host(HOST).build();
+            originalRequest = originalRequest.newBuilder().url(newUrl).build();
+            return chain.proceed(originalRequest);
+        }
     }
 
 }

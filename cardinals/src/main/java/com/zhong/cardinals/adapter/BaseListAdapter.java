@@ -56,6 +56,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter implements ParentAd
     public void addItem(int index, T item) {
         if (item != null && index >= 0) {
             mList.add(index, item);
+            notifyDataSetChanged();
         }
     }
 
@@ -71,6 +72,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter implements ParentAd
     public void removeItem(int index) {
         if (index >= 0 && !mList.isEmpty()) {
             mList.remove(index);
+            notifyDataSetChanged();
         }
     }
 
@@ -81,6 +83,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter implements ParentAd
             notifyDataSetChanged();
         }
     }
+
 
     @Override
     public int getCount() {

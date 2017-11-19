@@ -8,7 +8,7 @@ import android.view.View;
  * Created by zhong on 2015/10/12.
  * BaseListAdapter的辅助工具类
  */
-class ListViewHolder {
+public class ListViewHolder {
     private final View mConvertView;
     private final SparseArray<View> mViews;
 

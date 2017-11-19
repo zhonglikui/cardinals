@@ -35,7 +35,7 @@ public class AnimationUtils {
     /**
      * 逐帧动画
      *
-     * @param images  imagePath的list
+     * @param images   imagePath的list
      * @param duration 每张显示时长
      * @return 动画对象
      */

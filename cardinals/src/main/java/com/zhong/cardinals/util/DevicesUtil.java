@@ -124,7 +124,6 @@ public class DevicesUtil {
     }
 
 
-
     /**
      * 获取手机的唯一识别码
      *

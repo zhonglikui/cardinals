@@ -22,6 +22,7 @@ import java.io.File;
 public class GetPictureActivity extends Activity {
     public static final String IMAGE_TYPE = "image_type";
     public static final String IMAGE_PATH = "image_path";
+    public static final String IMAGE_RESULT_PATH = "image_result_path";
     public static final int IMAGE_CAPTURE = 100;//拍照选择
     public static final int IMAGE_LOCATION = 101;//从相册选择
     public static final int IMAGE_CROP = 102;//裁剪
@@ -69,8 +70,9 @@ public class GetPictureActivity extends Activity {
                 case IMAGE_CROP:
                     String imagePath = getIntent().getStringExtra(IMAGE_PATH);
                     intent = new Intent(this, PhotoCropActivity.class);
-                    intent.putExtra("path", imagePath);
+                    intent.putExtra(PhotoCropActivity.PARAM_PATH, imagePath);
                     startActivityForResult(intent, IMAGE_CROP);
+                    Logger.d("需要裁剪的path: " + imagePath);
                     break;
 
             }
@@ -103,6 +105,9 @@ public class GetPictureActivity extends Activity {
                     }
                     break;
                 case IMAGE_CROP:
+                    imagePath = data.getStringExtra(PhotoCropActivity.PARAM_PATH);
+                    Logger.d("裁剪成功" + imagePath);
+                    data.putExtra(IMAGE_RESULT_PATH, imagePath);
                     setResult(Activity.RESULT_OK, data);
                     finish();
                     break;
@@ -132,6 +137,7 @@ public class GetPictureActivity extends Activity {
 
             ImageUtil.saveImage(bitmap, filePath, 50);
             // deleteTempPicture();
+            Logger.d("处理图片" + filePath);
 
             Intent resultIntent = new Intent();
             resultIntent.putExtra(IMAGE_PATH, filePath);

@@ -164,6 +164,7 @@ public class PackageUtils {
 
     /**
      * 获取手机的唯一识别码
+     *
      * @param context Context对象
      * @return 手机的IMEI识别码
      * @deprecated DeviceUtils
@@ -193,7 +194,6 @@ public class PackageUtils {
     public static String getOsVersion() {
         return android.os.Build.VERSION.RELEASE;
     }
-
 
 
 }

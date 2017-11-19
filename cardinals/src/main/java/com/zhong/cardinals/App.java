@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 
@@ -28,6 +29,7 @@ public class App {
         this.mContext = context;
         this.isDebug = true;
     }
+
     public void init(Context context, boolean isDebug) {
         this.mContext = context;
         this.isDebug = isDebug;
@@ -55,6 +57,10 @@ public class App {
 
     public Drawable getDrawable(@DrawableRes int resId) {
         return getResources().getDrawable(resId);
+    }
+
+    public int getColor(@ColorRes int colorId) {
+        return getResources().getColor(colorId);
     }
 
     private static class Single {
