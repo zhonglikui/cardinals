@@ -20,4 +20,7 @@ public abstract class MvpPresenter<V extends MvpView> {
     public void detachView() {
         view = null;
     }
+
+
+
 }

@@ -1,15 +1,18 @@
 package com.zhong.cardinals;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.zhong.cardinals.util.ImageUtil;
 import com.zhong.cardinals.util.Logger;
+import com.zhong.cardinals.util.PermissionUtils;
 import com.zhong.cardinals.util.SDUtil;
 import com.zhong.cardinals.util.ToastUtil;
 
@@ -17,6 +20,7 @@ import java.io.File;
 
 /**
  * Created by zhong on 17/2/4.
+ * 权限适配的坑 https://www.jianshu.com/p/765603bebced
  */
 
 public class GetPictureActivity extends Activity {
@@ -40,6 +44,25 @@ public class GetPictureActivity extends Activity {
             Logger.d("类型是：" + getImageRequestType);
             switch (getImageRequestType) {
                 case IMAGE_CAPTURE:
+                 /*   if (PermissionUtils.hasAlwaysDeniedPermission(this, Manifest.permission.CAMERA)){
+                        PermissionUtils.requestPermissions(this, IMAGE_CAPTURE, new String[]{Manifest.permission.CAMERA}, new PermissionUtils.OnPermissionListener() {
+                            @Override
+                            public void onPermissionGranted() {
+
+                            }
+
+                            @Override
+                            public void onPermissionDenied(String[] deniedPermissions) {
+                                DialogUtil.getDialog(GetPictureActivity.this, null, "请在设置中打开相机权限", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                      GetPictureActivity.this.finish();
+                                    }
+                                },null);
+
+                            }
+                        });
+                    }*/
                     File file = new File(imageUri.getPath());
                     if (file.exists()) {
                         boolean isDelete = file.delete();
@@ -159,4 +182,11 @@ public class GetPictureActivity extends Activity {
             new File(imageUri.getPath()).delete();
         }
     }*/
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionUtils.onRequestPermissionsResult(this, IMAGE_CAPTURE, new String[]{Manifest.permission.CAMERA}, grantResults);
+
+    }
 }

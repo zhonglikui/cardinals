@@ -30,7 +30,6 @@ public class Conversion {
     }
 
     /**
-     *
      * @param hexString 转化前的字符串
      * @return 转化后的byte数组
      */

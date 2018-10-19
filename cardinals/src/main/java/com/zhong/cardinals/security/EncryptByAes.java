@@ -26,12 +26,12 @@ import javax.crypto.spec.SecretKeySpec;
 public class EncryptByAes implements Encrypt {
     private SecretKey key;
 
-    public EncryptByAes() {
+    public EncryptByAes(int keyLength) {
 
         try {
             //生成key
             KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-            keyGenerator.init(256);
+            keyGenerator.init(keyLength);
             //产生秘钥
             SecretKey secretKey = keyGenerator.generateKey();
             //获取秘钥
@@ -86,7 +86,7 @@ public class EncryptByAes implements Encrypt {
             cipher.init(Cipher.DECRYPT_MODE, key);
             byte[] decode = Base64.decode(cipherText.getBytes(), Base64.URL_SAFE);
             byte[] decodeBytes = cipher.doFinal(decode);
-            return new String(decodeBytes);
+            return decodeBytes.toString();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (NoSuchPaddingException e) {

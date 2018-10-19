@@ -9,6 +9,8 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 
+import com.zhong.cardinals.net.NetInterface;
+
 /**
  * Created by zhong on 2017/3/10.
  */
@@ -17,6 +19,7 @@ public class App {
     private static Handler mHandler = new Handler(Looper.getMainLooper());
     private boolean isDebug;
     private Context mContext;
+    private NetInterface netInterface;
 
     private App() {
     }
@@ -26,14 +29,19 @@ public class App {
     }
 
     public void init(Context context) {
-        this.mContext = context;
-        this.isDebug = true;
+        this.init(context, true);
     }
 
     public void init(Context context, boolean isDebug) {
+        this.init(context, isDebug, null);
+    }
+
+    public void init(Context context, boolean isDebug, NetInterface netInterface) {
         this.mContext = context;
         this.isDebug = isDebug;
+        this.netInterface = netInterface;
     }
+
 
     public boolean isDebug() {
         return isDebug;
@@ -45,6 +53,10 @@ public class App {
 
     public Context getContext() {
         return mContext;
+    }
+
+    public NetInterface getNetInterface() {
+        return netInterface;
     }
 
     public Resources getResources() {
@@ -65,5 +77,9 @@ public class App {
 
     private static class Single {
         private final static App instance = new App();
+    }
+
+    public interface Net {
+        void callback();
     }
 }

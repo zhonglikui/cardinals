@@ -46,9 +46,8 @@ public class NetWorkClient {
     }
 
     /**
-     *
-     * @param serviceClass  API接口类
-     * @param <T>  接口类类型
+     * @param serviceClass API接口类
+     * @param <T>          接口类类型
      * @return 创建的api接口
      */
     public static <T> T createService(Class<T> serviceClass) {

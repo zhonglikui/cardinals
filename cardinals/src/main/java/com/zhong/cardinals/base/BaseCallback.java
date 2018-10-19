@@ -21,14 +21,14 @@ public abstract class BaseCallback<T> implements Callback<T> {
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
-        if (response.isSuccessful()) {//请求成功
+        int code = response.code();
+        if (response.isSuccessful() && code == 200) {//请求成功
             onSuccess(response.body());
         } else {//请求失败比如 404 500 之类的
             try {
-                int code = response.code();
                 String error = response.errorBody().string();
                 onFailure(code, error);
-                Logger.e("response error:" + code + " : " + error);
+                Logger.e("BaseCallback  response error:" + code + " : " + error);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -40,7 +40,7 @@ public abstract class BaseCallback<T> implements Callback<T> {
     @Override
     public void onFailure(Call<T> call, Throwable t) {//没有网络或者数据模型出错之类的
         onFailure(-1, t.getMessage());
-        Logger.e("onFailure:" + t.getMessage());
+        Logger.e("BaseCallBack onFailure:" + t.getMessage());
 
     }
 }

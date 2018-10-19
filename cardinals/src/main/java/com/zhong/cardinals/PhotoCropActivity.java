@@ -19,7 +19,7 @@ public class PhotoCropActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         resultPath = getIntent().getStringExtra(PARAM_PATH);
-        Logger.d("�ü��󷵻ص�path:" + resultPath);
+        Logger.d("裁剪后返回的path:" + resultPath);
         Intent intent = new Intent();
         intent.putExtra(PARAM_PATH, resultPath);
         setResult(RESULT_OK, intent);

@@ -1,5 +1,6 @@
 package com.zhong.cardinals.base;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -15,7 +16,7 @@ import retrofit2.Call;
  * Created by zhong on 2017/3/10.
  */
 
-public abstract class BaseActivity<V, T extends BasePresenter<V>> extends BaseEmptyActivity {
+public abstract class BaseActivity<V, T extends BasePresenter<V>> extends Activity {
     //BaseActivity中包含两个泛型参数，第一个是View接口类型，第二个是Presenter的具体类型。
     protected T presenter;//Presenter对象
     protected Dialog progressDialog;

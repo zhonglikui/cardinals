@@ -14,6 +14,7 @@ public class EncryptByMD5 implements Encrypt {
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
             md5.update(plainText.getBytes());
+
             return Conversion.bytesToHexString(md5.digest());
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();

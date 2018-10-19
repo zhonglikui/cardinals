@@ -6,11 +6,16 @@ import android.hardware.Camera;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
+import android.os.Build;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 import com.zhong.cardinals.App;
+import com.zhong.cardinals.mode.DeviceInfo;
+
+import java.util.UUID;
 
 /**
  * Created by zhong on 2017/2/9.
@@ -18,6 +23,8 @@ import com.zhong.cardinals.App;
  */
 
 public class DevicesUtil {
+    private static final String IDENTITY = "identity";
+
     /**
      * 获取手机屏幕的高度
      *
@@ -125,38 +132,79 @@ public class DevicesUtil {
 
 
     /**
-     * 获取手机的唯一识别码
-     *
-     * @param context Context对象
-     * @return 手机的IMEI识别码
+     * @return
+     * @deprecated DeviceUtil
      */
-    public static String getIMEI(Context context) {
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        return tm.getDeviceId();
+    public static String getDeviceMode() {
+        return android.os.Build.MODEL;
     }
 
-/*    public static String getPhoneInfo(Context context) {
-        TelephonyManager tm = (TelephonyManager) context
-                .getSystemService(Context.TELEPHONY_SERVICE);
-        StringBuilder sb = new StringBuilder();
-        sb.append("\n设备Id(IMEI) = " + tm.getDeviceId());// 15位数字的设备id
-        sb.append("\n手机型号：" + android.os.Build.MODEL);//例如GT-I9502
-        sb.append("\n系统名称：" + android.os.Build.DISPLAY);
-        sb.append("\n设备名称：" + android.os.Build.DEVICE);// m1metal--HM2014011--ja3gchnduos
-        sb.append("\n硬件：" + android.os.Build.HARDWARE);// 一般显示处理器型号
+    /**
+     * @return
+     * @deprecated Device
+     */
+    public static String getDevice() {
+        return Build.DEVICE;
+    }
 
-        sb.append("\nID：" + android.os.Build.ID);// LMY47I--HM2014011--LRX22C
-        sb.append("\n手机7：" + android.os.Build.TAGS);// 手机一般显示release-keys，可以区分是不是模拟器
+    public static String getOsVersion() {
+        return android.os.Build.VERSION.RELEASE;
+    }
 
-        sb.append("\n用户类型：" + android.os.Build.TYPE);// user--user--user
+    /*    public static String getPhoneInfo(Context context) {
+            TelephonyManager tm = (TelephonyManager) context
+                    .getSystemService(Context.TELEPHONY_SERVICE);
+            StringBuilder sb = new StringBuilder();
+            sb.append("\n设备Id(IMEI) = " + tm.getDeviceId());// 15位数字的设备id
+            sb.append("\n手机型号：" + android.os.Build.MODEL);//例如GT-I9502
+            sb.append("\n系统名称：" + android.os.Build.DISPLAY);
+            sb.append("\n设备名称：" + android.os.Build.DEVICE);// m1metal--HM2014011--ja3gchnduos
+            sb.append("\n硬件：" + android.os.Build.HARDWARE);// 一般显示处理器型号
 
-        sb.append("\n手机11：" + android.os.Build.VERSION.CODENAME);// REL
-        sb.append("\nandroid版本：" + android.os.Build.VERSION.RELEASE);//android版本例如 4.4.2
-        sb.append("\nandroidApi版本：" + android.os.Build.VERSION.SDK_INT);//手机的android APi 19
-        sb.append("\n手机14：" + android.os.Build.VERSION_CODES.BASE);// 1--1--1
-        Logger.i("info:" + sb.toString());
-        return sb.toString();
-    }*/
+            sb.append("\nID：" + android.os.Build.ID);// LMY47I--HM2014011--LRX22C
+            sb.append("\n手机7：" + android.os.Build.TAGS);// 手机一般显示release-keys，可以区分是不是模拟器
+
+            sb.append("\n用户类型：" + android.os.Build.TYPE);// user--user--user
+
+            sb.append("\n手机11：" + android.os.Build.VERSION.CODENAME);// REL
+            sb.append("\nandroid版本：" + android.os.Build.VERSION.RELEASE);//android版本例如 4.4.2
+            sb.append("\nandroidApi版本：" + android.os.Build.VERSION.SDK_INT);//手机的android APi 19
+            sb.append("\n手机14：" + android.os.Build.VERSION_CODES.BASE);// 1--1--1
+            Logger.i("info:" + sb.toString());
+            return sb.toString();
+        }*/
+    public static DeviceInfo getDeviceInfo(Context context) {
+        String identity = SPUtil.getString(IDENTITY);
+        DeviceInfo deviceInfo = new DeviceInfo();
+        if (TextUtils.isEmpty(identity)) {
+            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            if (tm != null) {
+                identity = tm.getDeviceId();
+                if (TextUtils.isEmpty(identity)) {
+                    identity = UUID.randomUUID().toString();
+                }
+            } else {
+                identity = UUID.randomUUID().toString();
+            }
+            SPUtil.putString(IDENTITY, identity);
+        }
+        deviceInfo.setImei(identity);
+        deviceInfo.setModel(Build.MODEL);
+        deviceInfo.setDisplay(Build.DISPLAY);
+        deviceInfo.setDevice(Build.DEVICE);
+        deviceInfo.setHardware(Build.HARDWARE);
+        deviceInfo.setId(Build.ID);
+        deviceInfo.setTags(Build.TAGS);
+        deviceInfo.setType(Build.TYPE);
+        deviceInfo.setBoard(Build.BOARD);
+        deviceInfo.setBrand(Build.BRAND);
+        deviceInfo.setSdk_int(Build.VERSION.SDK_INT);
+        deviceInfo.setCodeName(Build.VERSION.CODENAME);
+        deviceInfo.setIncremental(Build.VERSION.INCREMENTAL);
+        deviceInfo.setRelease(Build.VERSION.RELEASE);
+        return deviceInfo;
+
+    }
 
 
 }

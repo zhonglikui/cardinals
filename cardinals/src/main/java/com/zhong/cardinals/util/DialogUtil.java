@@ -1,12 +1,12 @@
 package com.zhong.cardinals.util;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -49,6 +49,16 @@ public class DialogUtil {
         return builder.show();
     }
 
+    /**
+     * 默认样式的dialog
+     *
+     * @param activity
+     * @param title
+     * @param message
+     * @param positiveListener 确认操作
+     * @param negativeListener 取消操作
+     * @return
+     */
     public static Dialog getDialog(Activity activity, String title, @NonNull String message, @NonNull DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         if (!TextUtils.isEmpty(title)) {
@@ -177,6 +187,8 @@ public class DialogUtil {
         return dialog;
     }
 
+
+    //底部dialog
     public static void showBottomDialog(final Activity activity, View view) {
 
 
@@ -197,6 +209,13 @@ public class DialogUtil {
 
     }
 
+    public static AlertDialog getCustomDialog(final Activity activity, View view) {
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(activity).setCancelable(true);
+        dialog.setView(view);
+        return dialog.create();
+    }
+
+
     public static Dialog showSingleItemDialog(Activity activity, String title, int itemsId, int checkedItem, DialogInterface.OnClickListener onClickListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         if (!TextUtils.isEmpty(title)) {
@@ -207,6 +226,15 @@ public class DialogUtil {
     }
 
     public static Dialog showItemDialog(Activity activity, String title, int itemsId, DialogInterface.OnClickListener onClickListener) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        if (!TextUtils.isEmpty(title)) {
+            builder.setTitle(title);
+        }
+        builder.setItems(itemsId, onClickListener);
+        return builder.show();
+    }
+
+    public static Dialog showItemDialog(Activity activity, String title, String[] itemsId, DialogInterface.OnClickListener onClickListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         if (!TextUtils.isEmpty(title)) {
             builder.setTitle(title);

@@ -15,9 +15,12 @@ public class TimeUtils {
     public static final String DATE_FORMAT_YEAR_TO_DAY = "yyyy-MM-dd";
     public static final String DATE_FORMAT_HOUR_TO_SECONDS = "HH:mm:ss";
     public static final String DATE_FORMAT_YEAR_TO_MONTH = "yyyy-MM";
-    public static final String DATE_FORMAT_DAY_TO_MINUTE = "MM-dd HH:mm";
+    public static final String DATE_FORMAT_MONTH_TO_MINUTE = "MM-dd HH:mm";
+    public static final String DATE_FORMAT_MONTH_TO_SECONDS = "MM-dd HH:mm:ss";
     public static final String DATE_FORMAT_MONTH_TO_DAY = "MM-dd";
     public static final String DATE_FORMAT_YEAR_TO_DAY_CN = "yyyy年MM月dd日";
+    public static final String DATE_FORMAT_WEEK = "EEEE";
+    public static final String DATE_FORMAT_YEAR_TO_DAY_2 = "yyyyMMdd";
     private static final int seconds_of_1minute = 60;
     private static final int seconds_of_30minutes = 30 * 60;
     private static final int seconds_of_1hour = 60 * 60;
@@ -42,10 +45,20 @@ public class TimeUtils {
         return df.format(new Date());
     }
 
+    /**
+     * @param format
+     * @param position
+     * @return 获取前几天或者后几天
+     */
     public static String getPastDate(String format, int position) {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, position);
         return new SimpleDateFormat(format, Locale.getDefault()).format(cal.getTime());
+    }
+
+    public static String getDateFormat(Date date, String format) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(format, Locale.getDefault());
+        return dateFormat.format(date);
     }
 
     public static String getDateFormat(String time, String format) {
@@ -55,6 +68,7 @@ public class TimeUtils {
             date = dateFormat.parse(time);
         } catch (ParseException e) {
             e.printStackTrace();
+            return null;
         }
         return dateFormat.format(date);
     }
@@ -109,7 +123,7 @@ public class TimeUtils {
      * @param millSec    时间
      * @return 格式化后的结果
      */
-    public static String transferLongToDate(String dateFormat, Long millSec) {
+    public static String transferLongToDate(String dateFormat, long millSec) {
         Date d = new Date(millSec);
         SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.getDefault());
         return sdf.format(d);
@@ -169,7 +183,56 @@ public class TimeUtils {
 //            return elapsedTime / seconds_of_1year + "年前";
 //        }
 
-        return transferLongToDate(DATE_FORMAT_DAY_TO_MINUTE, createTime);
+        return transferLongToDate(DATE_FORMAT_MONTH_TO_MINUTE, createTime);
+    }
+
+    /**
+     * 判断某一时间是否在一个区间内
+     *
+     * @param sourceTime 时间区间,半闭合,如[10:00-20:00)
+     * @param curTime    需要判断的时间 如10:00
+     * @return
+     * @throws IllegalArgumentException
+     */
+    public static boolean isInTime(String sourceTime, String curTime) {
+        //Logger.d(sourceTime+"  :  "+sourceTime.contains("-"));
+       /* if (sourceTime == null || !sourceTime.contains("—") || !sourceTime.contains(":")) {
+           // throw new IllegalArgumentException("Illegal Argument arg:" + sourceTime);
+
+            return false;
+        }*/
+
+        if (sourceTime == null || !sourceTime.contains("—") || !sourceTime.contains(":")) {
+            Logger.d("格式化数据不规范1 " + sourceTime + " - " + sourceTime.contains("—") + " ： " + sourceTime.contains(":"));
+            return false;
+        }
+        if (curTime == null || !curTime.contains(":")) {
+            //  throw new IllegalArgumentException("Illegal Argument arg:" + curTime);
+            Logger.d("格式化数据不规范2");
+            return false;
+        }
+        String[] args = sourceTime.split("-");
+        Logger.d("time1=" + args[0] + " ; " + args[1] + " -" + sourceTime.contains("-"));
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        try {
+            long now = sdf.parse(curTime).getTime();
+            long start = sdf.parse(args[0]).getTime();
+            long end = sdf.parse(args[1]).getTime();
+            if (args[1].equals("00:00")) {
+                args[1] = "24:00";
+            }
+            if (end < start) {
+                return !(now >= end && now < start);
+            } else {
+                return now >= start && now < end;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Logger.d("格式化数据错误");
+            return false;
+            // throw new IllegalArgumentException("Illegal Argument arg:" + sourceTime);
+        }
+
     }
 
 

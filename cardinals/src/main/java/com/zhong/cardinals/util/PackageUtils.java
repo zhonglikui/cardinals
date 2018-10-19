@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
-import android.telephony.TelephonyManager;
 
 import com.zhong.cardinals.App;
 
@@ -162,38 +160,7 @@ public class PackageUtils {
         return false;
     }
 
-    /**
-     * 获取手机的唯一识别码
-     *
-     * @param context Context对象
-     * @return 手机的IMEI识别码
-     * @deprecated DeviceUtils
-     */
-    public static String getIMEI(Context context) {
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        Logger.i("IMEI=" + tm.getDeviceId());
-        return tm.getDeviceId();
-    }
 
-    /**
-     * @return
-     * @deprecated DeviceUtil
-     */
-    public static String getDeviceMode() {
-        return android.os.Build.MODEL;
-    }
-
-    /**
-     * @return
-     * @deprecated Device
-     */
-    public static String getDevice() {
-        return Build.DEVICE;
-    }
-
-    public static String getOsVersion() {
-        return android.os.Build.VERSION.RELEASE;
-    }
 
 
 }

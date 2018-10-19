@@ -25,8 +25,8 @@ public class SMSObserver extends ContentObserver {
     /**
      * Creates a content observer.
      *
-     * @param handler The handler to run {@link #onChange} on, or null if none.
-     * @param  codeLength The length of the verification code
+     * @param handler    The handler to run {@link #onChange} on, or null if none.
+     * @param codeLength The length of the verification code
      */
     public SMSObserver(Handler handler, int codeLength) {
         super(handler);
