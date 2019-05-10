@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="330dp"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_update_bg">
+
+    <TextView
+        android:id="@+id/update_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:textColor="@android:color/black"
+        android:paddingLeft="30dp"
+        android:text="123456"
+        android:paddingRight="30dp" />
+
+    <!--  <TextView
+          android:id="@+id/update_cancel"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_centerHorizontal="true"
+          android:layout_marginBottom="20dp"
+          android:background="@drawable/bg_update_later"
+          android:padding="5dp"
+          android:text=" 以后再说 "
+          android:textColor="@color/color_consumption_zhi" />-->
+
+    <RelativeLayout
+        android:id="@+id/update_sure"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/bg_update_layout_bg">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_update_red_bg"
+            android:gravity="center"
+            android:text="立即\n升级"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -8,6 +8,11 @@
     <string name="gender_female">女</string>
     <string name="photo_album">相册</string>
     <string name="take_photo">拍照</string>
+    <string name="str_welcome">欢迎</string>
+    <string name="str_login">登录</string>
+    <string name="str_empty_phone_number">请输入手机号码</string>
+    <string name="str_empty_password">请输入密码</string>
+    <string name="str_login_success">登录成功</string>
     <!--权限-->
     <string name="permission_sd">请在设置中打开SD卡读写权限</string>
     <string name="permission_camera">请在设置中打开相机权限</string>

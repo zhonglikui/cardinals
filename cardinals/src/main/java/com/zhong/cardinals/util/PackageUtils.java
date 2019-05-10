@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.text.TextUtils;
 
 import com.zhong.cardinals.App;
 
@@ -143,6 +144,7 @@ public class PackageUtils {
     }
 
     /**
+     * @deprecated 可以参考： https://blog.csdn.net/axi295309066/article/details/56123954
      * 判断当前应用是否在前端运行
      *
      * @param context Contex对象
@@ -153,14 +155,38 @@ public class PackageUtils {
         List<ActivityManager.RunningTaskInfo> tasks = am.getRunningTasks(1);
         if (!tasks.isEmpty()) {
             ComponentName topActivity = tasks.get(0).topActivity;
-            if (topActivity.getPackageName().equals(context.getPackageName())) {
-                return true;
-            }
+            return topActivity.getPackageName().equals(context.getPackageName());
         }
         return false;
     }
 
 
+    /**
+     * 当前启动的是否是主进程
+     *
+     * @return
+     */
+    public static boolean isMainProcess() {
+        String packageName = getPackageName();
+        String processName = getCurProcessName(App.getInstance().getContext());
+        return packageName.equals(processName);
+    }
+
+    /**
+     * 启动的是否是指定进程
+     *
+     * @param process
+     * @return
+     */
+    public static boolean isProcess(String process) {
+        if (!TextUtils.isEmpty(process)) {
+            String processName = getCurProcessName(App.getInstance().getContext());
+            return process.equals(processName);
+        } else {
+            return false;
+        }
+
+    }
 
 
 }

@@ -12,7 +12,7 @@ import com.zhong.cardinals.net.NetWorkClient;
  */
 
 public class BaseApplication extends MultiDexApplication {
-    private static final String HOST = "http://gugu.prprlive.com/";
+    private static final String HOST = "http://host/";
 
     @Override
     public void onCreate() {

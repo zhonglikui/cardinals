@@ -5,13 +5,18 @@
     <string name="loading">loading...</string>
     <string name="str_cancel">@android:string/cancel</string>
     <string name="str_confirm">@android:string/ok</string>
-    <!--    <string name="permission_audio">Allow Access To Micropone</string>
-        <string name="permission_camera">Allow Access To Camera</string>
-        <string name="permission_camera_audio">Allow Access To Camera And Micropone</string>-->
+    <string name="permission_audio">Allow Access To Micropone</string>
+    <string name="permission_camera">Allow Access To Camera</string>
+    <string name="permission_camera_audio">Allow Access To Camera And Micropone</string>
     <string name="permission_sd">Allow Access To SD Card</string>
     <string name="gender">Gender</string>
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
     <string name="photo_album">Photo Album</string>
     <string name="take_photo">Take Photo</string>
+    <string name="str_welcome">Welcom</string>
+    <string name="str_login">login</string>
+    <string name="str_empty_phone_number">please input phone number</string>
+    <string name="str_empty_password">please input password</string>
+    <string name="str_login_success">login success</string>
 </resources>

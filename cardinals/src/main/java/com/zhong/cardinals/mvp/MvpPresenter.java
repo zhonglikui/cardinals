@@ -21,6 +21,4 @@ public abstract class MvpPresenter<V extends MvpView> {
         view = null;
     }
 
-
-
 }

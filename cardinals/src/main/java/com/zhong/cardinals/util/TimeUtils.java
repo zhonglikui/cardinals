@@ -21,6 +21,7 @@ public class TimeUtils {
     public static final String DATE_FORMAT_YEAR_TO_DAY_CN = "yyyy年MM月dd日";
     public static final String DATE_FORMAT_WEEK = "EEEE";
     public static final String DATE_FORMAT_YEAR_TO_DAY_2 = "yyyyMMdd";
+    public static final String DATE_FORMAT_YEAR_TO_WEEK = "yyyy.MM.dd EEEE";
     private static final int seconds_of_1minute = 60;
     private static final int seconds_of_30minutes = 30 * 60;
     private static final int seconds_of_1hour = 60 * 60;

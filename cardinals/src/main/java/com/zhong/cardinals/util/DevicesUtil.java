@@ -2,7 +2,6 @@ package com.zhong.cardinals.util;
 
 import android.app.Activity;
 import android.content.Context;
-import android.hardware.Camera;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
@@ -99,36 +98,7 @@ public class DevicesUtil {
 
     }
 
-    /**
-     * 测试当前摄像头能否被使用
-     *
-     * @return true可用，false不可用
-     */
-    public static boolean isCameraCanUse(Activity activity) {
-        boolean canUseCamera;
-     /*   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){//6.0以上系统
-            if (ContextCompat.checkSelfPermission(activity,Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED) {
-                return false;
-            }else{
-                return true;
-            }
 
-        }else {*/
-        Camera mCamera = null;
-        try {
-            mCamera = Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK);
-            canUseCamera = true;
-        } catch (Exception e) {
-            canUseCamera = false;
-        }
-        if (canUseCamera) {
-            mCamera.release();
-        }
-
-        // }
-
-        return canUseCamera;
-    }
 
 
     /**

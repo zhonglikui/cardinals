@@ -12,15 +12,15 @@ import com.zhong.cardinals.sample.mode.UserInfo;
 import com.zhong.cardinals.util.ToastUtil;
 
 public class LoginActivity extends MvpActivity<LoginView, LoginPresenter> implements LoginView, View.OnClickListener {
-    private AppCompatEditText etPhone;
-    private AppCompatEditText etPassword;
+    private AppCompatEditText etPhone, etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        etPhone = (AppCompatEditText) findViewById(R.id.et_phone);
-        etPassword = (AppCompatEditText) findViewById(R.id.et_password);
+        setTitle(R.string.str_login);
+        etPhone = findViewById(R.id.et_phone);
+        etPassword = findViewById(R.id.et_password);
         findViewById(R.id.bt_login).setOnClickListener(this);
     }
 
@@ -32,12 +32,12 @@ public class LoginActivity extends MvpActivity<LoginView, LoginPresenter> implem
 
     @Override
     public void isEmptyPhoneNumber() {
-        ToastUtil.showShort("请输入手机号码");
+        ToastUtil.showShort(R.string.str_empty_phone_number);
     }
 
     @Override
     public void isEmptyPassword() {
-        ToastUtil.showShort("请输入密码");
+        ToastUtil.showShort(R.string.str_empty_password);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class LoginActivity extends MvpActivity<LoginView, LoginPresenter> implem
 
     @Override
     public void onSuccess(UserInfo userInfo) {
-        ToastUtil.showShort("登录成功");
+        ToastUtil.showShort(R.string.str_login_success);
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();

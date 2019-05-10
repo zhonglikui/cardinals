@@ -71,7 +71,7 @@ public class EncryptByPbe implements Encrypt {
      *
      * @return byte[] 盐值
      */
-    public static byte[] getSalt() throws Exception {
+    public static byte[] getSalt() {
         //实例化安全随机数
         SecureRandom random = new SecureRandom();
         //产出盐

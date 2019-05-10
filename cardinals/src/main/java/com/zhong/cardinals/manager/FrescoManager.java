@@ -287,19 +287,7 @@ public class FrescoManager {
             if (maxWidth == 0) {
                 display(view, url);
             } else if (maxWidth > 0) {
-                ControllerListener listener = new BaseControllerListener<ImageInfo>() {
-                    @Override
-                    public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
-                        super.onFinalImageSet(id, imageInfo, animatable);
-                        view.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                        changeImageSize(imageInfo, maxWidth, view);
-                    }
 
-                    @Override
-                    public void onFailure(String id, Throwable throwable) {
-                        super.onFailure(id, throwable);
-                    }
-                };
                 Uri uri;
                 if (URLUtil.isNetworkUrl(url)) {
                     uri = Uri.parse(url);
@@ -316,7 +304,38 @@ public class FrescoManager {
 
                 controller = Fresco.newDraweeControllerBuilder()
                         .setImageRequest(request)
-                        .setControllerListener(listener)
+                        .setControllerListener(new ControllerListener<ImageInfo>() {
+                            @Override
+                            public void onSubmit(String id, Object callerContext) {
+
+                            }
+
+                            @Override
+                            public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
+                                view.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                                changeImageSize(imageInfo, maxWidth, view);
+                            }
+
+                            @Override
+                            public void onIntermediateImageSet(String id, ImageInfo imageInfo) {
+
+                            }
+
+                            @Override
+                            public void onIntermediateImageFailed(String id, Throwable throwable) {
+
+                            }
+
+                            @Override
+                            public void onFailure(String id, Throwable throwable) {
+
+                            }
+
+                            @Override
+                            public void onRelease(String id) {
+
+                            }
+                        })
                         .setOldController(view.getController())
                         .build();
                 view.setController(controller);

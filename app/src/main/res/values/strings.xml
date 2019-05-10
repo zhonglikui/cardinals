@@ -1,4 +1,3 @@
 <resources>
-    <string name="app_name">cardinalsSample</string>
-    <string name="str_welcome">welcome</string>
+    <string name="app_name">cardinals</string>
 </resources>

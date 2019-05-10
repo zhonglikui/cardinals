@@ -9,6 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 
+import com.zhong.cardinals.App;
+
 import java.util.List;
 
 /**
@@ -43,7 +45,7 @@ public class AnimationUtils {
         AnimationDrawable animationDrawable = new AnimationDrawable();
         for (String imagepath : images) {
             Bitmap bitmap = BitmapFactory.decodeFile(imagepath);
-            Drawable drawable = new BitmapDrawable(bitmap);
+            Drawable drawable = new BitmapDrawable(App.getInstance().getResources(), bitmap);
             animationDrawable.addFrame(drawable, duration);
         }
         animationDrawable.setOneShot(false);

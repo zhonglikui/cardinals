@@ -60,6 +60,22 @@ public class DialogUtil {
      * @return
      */
     public static Dialog getDialog(Activity activity, String title, @NonNull String message, @NonNull DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener) {
+
+        return getDialog(activity, title, message, App.getInstance().getString(R.string.str_confirm), positiveListener, App.getInstance().getString(R.string.str_cancel), negativeListener);
+
+    }
+
+    /**
+     * @param activity
+     * @param title            dialog标题
+     * @param message          dialog内容
+     * @param positiveStr      确认提示
+     * @param positiveListener 确认操作
+     * @param negativeStr      取消提示
+     * @param negativeListener 取消操作
+     * @return
+     */
+    public static Dialog getDialog(Activity activity, String title, @NonNull String message, String positiveStr, @NonNull DialogInterface.OnClickListener positiveListener, String negativeStr, DialogInterface.OnClickListener negativeListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         if (!TextUtils.isEmpty(title)) {
             builder.setTitle(title);
@@ -68,10 +84,10 @@ public class DialogUtil {
             builder.setMessage(message);
         }
         if (negativeListener != null) {
-            builder.setNegativeButton(App.getInstance().getString(R.string.str_cancel), negativeListener);
+            builder.setNegativeButton(negativeStr, negativeListener);
         }
 
-        builder.setPositiveButton(App.getInstance().getString(R.string.str_confirm), positiveListener);
+        builder.setPositiveButton(positiveStr, positiveListener);
         builder.setCancelable(false);
 
         return builder.create();
