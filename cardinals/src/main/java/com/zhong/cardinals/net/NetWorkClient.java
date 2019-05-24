@@ -1,6 +1,6 @@
 package com.zhong.cardinals.net;
 
-import com.zhong.cardinals.App;
+import com.zhong.cardinals.Cardinals;
 
 import java.io.IOException;
 import java.net.Proxy;
@@ -81,7 +81,7 @@ public class NetWorkClient {
                     .connectTimeout(10, TimeUnit.SECONDS)
                     .readTimeout(10, TimeUnit.SECONDS)
                     .writeTimeout(10, TimeUnit.SECONDS);
-            if (App.getInstance().isDebug()) {
+            if (Cardinals.getInstance().isNoProxy()) {
                 builder.proxy(Proxy.NO_PROXY);
             }
             return builder.build();

@@ -1,6 +1,6 @@
 package com.zhong.cardinals.base;
 
-import com.zhong.cardinals.App;
+import com.zhong.cardinals.Cardinals;
 import com.zhong.cardinals.net.NetInterface;
 import com.zhong.cardinals.util.Logger;
 
@@ -26,7 +26,7 @@ public abstract class BaseFullCallback<T extends BaseData> implements Callback<T
     public void onResponse(Call<T> call, Response<T> response) {
         if (response.isSuccessful()) {//请求成功
             onSuccess(response.body());
-            NetInterface netInterface = App.getInstance().getNetInterface();
+            NetInterface netInterface = Cardinals.getInstance().getNetInterface();
             if (netInterface != null) {
                 if (response.body() instanceof BaseResponse) {
                     BaseResponse baseRes = (BaseResponse) response.body();

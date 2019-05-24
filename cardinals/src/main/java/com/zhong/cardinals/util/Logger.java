@@ -2,7 +2,7 @@ package com.zhong.cardinals.util;
 
 import android.util.Log;
 
-import com.zhong.cardinals.App;
+import com.zhong.cardinals.Cardinals;
 
 
 /**
@@ -11,55 +11,62 @@ import com.zhong.cardinals.App;
  */
 public class Logger {
 
-    private static final String TAG = "cardinals";
-    private static boolean isDebug = App.getInstance().isDebug();
+
+    private static boolean isShowLog;
+    private static String mTag;
+
+    static {
+        isShowLog = Cardinals.getInstance().isShowLog();
+        mTag = Cardinals.getInstance().getDefaultLogTag();
+    }
+
 
     public static void i(String msg) {
-        if (isDebug) {
-            Log.i(TAG, msg);
+        if (isShowLog) {
+            Log.i(mTag, msg);
         }
     }
 
     public static void d(String msg) {
-        if (isDebug) {
-            Log.d(TAG, msg);
+        if (isShowLog) {
+            Log.d(mTag, msg);
         }
     }
 
     public static void e(String msg) {
-        if (isDebug) {
-            Log.e(TAG, msg);
+        if (isShowLog) {
+            Log.e(mTag, msg);
         }
     }
 
 
     // 下面是传入自定义tag的函数
     public static void i(String tag, String msg) {
-        if (isDebug) {
+        if (isShowLog) {
             Log.i(tag, msg);
         }
     }
 
     public static void d(String tag, String msg) {
-        if (isDebug) {
+        if (isShowLog) {
             Log.d(tag, msg);
         }
     }
 
     public static void e(String tag, String msg) {
-        if (isDebug) {
+        if (isShowLog) {
             Log.e(tag, msg);
         }
     }
 
     public static void e(String msg, Throwable throwable) {
-        if (isDebug) {
-            Log.e(TAG, msg, throwable);
+        if (isShowLog) {
+            Log.e(mTag, msg, throwable);
         }
     }
 
     public static void e(String tag, String msg, Throwable throwable) {
-        if (isDebug) {
+        if (isShowLog) {
             Log.e(tag, msg, throwable);
         }
     }

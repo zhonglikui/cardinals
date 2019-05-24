@@ -1,5 +1,6 @@
 package com.zhong.cardinals;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -9,17 +10,15 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 
-import com.zhong.cardinals.net.NetInterface;
-
 /**
  * Created by zhong on 2017/3/10.
  */
 
 public class App {
     private static Handler mHandler = new Handler(Looper.getMainLooper());
-    private boolean isDebug;
     private Context mContext;
-    private NetInterface netInterface;
+    private boolean isDebug;
+
 
     private App() {
     }
@@ -28,18 +27,9 @@ public class App {
         return Single.instance;
     }
 
-    public void init(Context context) {
-        this.init(context, true);
-    }
-
-    public void init(Context context, boolean isDebug) {
-        this.init(context, isDebug, null);
-    }
-
-    public void init(Context context, boolean isDebug, NetInterface netInterface) {
-        this.mContext = context;
+    protected void init(boolean isDebug, Application application) {
+        this.mContext = application.getApplicationContext();
         this.isDebug = isDebug;
-        this.netInterface = netInterface;
     }
 
 
@@ -55,9 +45,6 @@ public class App {
         return mContext;
     }
 
-    public NetInterface getNetInterface() {
-        return netInterface;
-    }
 
     public Resources getResources() {
         return getContext().getResources();
@@ -79,7 +66,4 @@ public class App {
         private final static App instance = new App();
     }
 
-    public interface Net {
-        void callback();
-    }
 }
