@@ -15,6 +15,18 @@ cardinals是一个Android快速开发框架,将某些常用功能和第三方库
 ### 初始化
 在`Application`的`onCreate( )`中添加如下代码
 ```
-        App.getInstance().init(this);
-        NetWorkClient.init(HOST);
+                Builder builder = new Builder();
+                builder.setDefaultLogTag("zhong")
+                        .setNoProxy(false)
+                        .setShowLog(true)
+                        .setHost(HOST)
+                        .setDebug(true)
+                        .setNetInterface(new NetInterface() {
+                            @Override
+                            public void onResult(int code) {
+                                //收到系统自定义的http状态码
+                               }
+                     });
+
+                Cardinals.init(builder, this);
 ```
