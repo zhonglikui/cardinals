@@ -1,21 +1,21 @@
-package com.zhong.cardinals.sample.login;
+package com.zhong.cardinals.sample.login
 
-import android.text.TextUtils;
+import android.text.TextUtils
 
-import com.zhong.cardinals.mvp.MvpPresenter;
+import com.zhong.cardinals.mvp.MvpPresenter
 
 /**
  * Created by Mr.zhong on 2017/9/19.
  */
 //P层需要同时持有V层和M层的
-public class LoginPresenter extends MvpPresenter<LoginView> {
-    public void login(String phoneNumber, String password) {
+class LoginPresenter : MvpPresenter<LoginView>() {
+    fun login(phoneNumber: String, password: String) {
         if (TextUtils.isEmpty(phoneNumber)) {
-            getView().isEmptyPhoneNumber();
+            view.isEmptyPhoneNumber()
         } else if (TextUtils.isEmpty(password)) {
-            getView().isEmptyPassword();
+            view.isEmptyPassword()
         } else {
-            getView().onSuccess(null);
+            view.onSuccess(null)
 
             /*PasswordLogin passwordLogin = new PasswordLogin();
             Encrypt encrypt = new EncryptByMD5();
