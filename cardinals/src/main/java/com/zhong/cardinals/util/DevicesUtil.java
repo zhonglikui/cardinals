@@ -1,6 +1,5 @@
 package com.zhong.cardinals.util;
 
-import android.app.Activity;
 import android.content.Context;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -10,6 +9,8 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.zhong.cardinals.App;
 import com.zhong.cardinals.mode.DeviceInfo;
@@ -52,7 +53,7 @@ public class DevicesUtil {
     /**
      * 判断是是否有录音权限
      */
-    public static boolean isCanUseAudio(Activity activity) {
+    public static boolean isCanUseAudio(AppCompatActivity activity) {
   /*      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){//6.0以上系统
             if (ContextCompat.checkSelfPermission(activity,Manifest.permission.RECORD_AUDIO)!= PackageManager.PERMISSION_GRANTED) {
                 return false;

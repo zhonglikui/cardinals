@@ -1,8 +1,8 @@
 package com.zhong.cardinals.sample;
 
 
-import android.support.multidex.MultiDexApplication;
-import android.support.v7.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.multidex.MultiDexApplication;
 
 import com.zhong.cardinals.Builder;
 import com.zhong.cardinals.Cardinals;

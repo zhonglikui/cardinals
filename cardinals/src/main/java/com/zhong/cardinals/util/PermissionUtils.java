@@ -1,12 +1,13 @@
 package com.zhong.cardinals.util;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,7 @@ public final class PermissionUtils {
 
         @TargetApi(Build.VERSION_CODES.M)
         public void requestPermissionsAgain() {
-            ((Activity) context).requestPermissions(permissions, requestCode);
+            ((AppCompatActivity) context).requestPermissions(permissions, requestCode);
         }
     }
 
@@ -53,7 +54,7 @@ public final class PermissionUtils {
     @TargetApi(Build.VERSION_CODES.M)
     public static void requestPermissions(Context context, int requestCode
             , String[] permissions, OnPermissionListener listener, RationaleHandler handler) {
-        if (context instanceof Activity) {
+        if (context instanceof AppCompatActivity) {
             mRequestCode = requestCode;
             mOnPermissionListener = listener;
             String[] deniedPermissions = getDeniedPermissions(context, permissions);
@@ -62,7 +63,7 @@ public final class PermissionUtils {
                 if (rationale && handler != null) {
                     handler.showRationale(context, requestCode, deniedPermissions);
                 } else {
-                    ((Activity) context).requestPermissions(deniedPermissions, requestCode);
+                    ((AppCompatActivity) context).requestPermissions(deniedPermissions, requestCode);
                 }
             } else {
                 if (mOnPermissionListener != null)
@@ -76,7 +77,7 @@ public final class PermissionUtils {
     /**
      * 请求权限结果，对应Activity中onRequestPermissionsResult()方法。
      */
-    public static void onRequestPermissionsResult(Activity context, int requestCode, String[] permissions, int[]
+    public static void onRequestPermissionsResult(AppCompatActivity context, int requestCode, String[] permissions, int[]
             grantResults) {
         if (mRequestCode != -1 && requestCode == mRequestCode) {
             if (mOnPermissionListener != null) {
@@ -122,7 +123,7 @@ public final class PermissionUtils {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return false;
         boolean rationale;
         for (String permission : deniedPermissions) {
-            rationale = ActivityCompat.shouldShowRequestPermissionRationale((Activity) context, permission);
+            rationale = ActivityCompat.shouldShowRequestPermissionRationale((AppCompatActivity) context, permission);
             if (rationale) return true;
         }
         return false;

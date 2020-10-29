@@ -7,8 +7,10 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.zhong.cardinals.util.ImageUtil;
 import com.zhong.cardinals.util.Logger;
@@ -23,7 +25,7 @@ import java.io.File;
  * 权限适配的坑 https://www.jianshu.com/p/765603bebced
  */
 
-public class GetPictureActivity extends Activity {
+public class GetPictureActivity extends AppCompatActivity {
     public static final String IMAGE_TYPE = "image_type";
     public static final String IMAGE_PATH = "image_path";
     public static final String IMAGE_RESULT_PATH = "image_result_path";
@@ -164,14 +166,14 @@ public class GetPictureActivity extends Activity {
 
             Intent resultIntent = new Intent();
             resultIntent.putExtra(IMAGE_PATH, filePath);
-            setResult(Activity.RESULT_OK, resultIntent);
+            setResult(AppCompatActivity.RESULT_OK, resultIntent);
             GetPictureActivity.this.finish();
 
         } else {
             //没有获取到文件的路径
             ToastUtil.showShort("图片获取失败");
 
-            setResult(Activity.RESULT_CANCELED);
+            setResult(AppCompatActivity.RESULT_CANCELED);
             finish();
         }
     }

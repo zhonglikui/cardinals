@@ -1,9 +1,10 @@
 package com.zhong.cardinals;
 
-import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.support.v4.app.ActivityCompat;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.zhong.cardinals.util.Logger;
 
@@ -15,7 +16,7 @@ import com.zhong.cardinals.util.Logger;
 public class Permission {
     //检查权限
 
-    public static void checkSelfPermission(Activity activity, String permission, int request) {
+    public static void checkSelfPermission(AppCompatActivity activity, String permission, int request) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//android6.0以上才支持
             //获取已经被
             //  List<String> deniedPermissions = findDeniedPermissions(activity, permission);

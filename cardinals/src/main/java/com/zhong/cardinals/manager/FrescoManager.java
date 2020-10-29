@@ -5,10 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Animatable;
 import android.net.Uri;
-import android.support.annotation.DrawableRes;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.webkit.URLUtil;
+
+import androidx.annotation.DrawableRes;
 
 import com.facebook.binaryresource.BinaryResource;
 import com.facebook.binaryresource.FileBinaryResource;

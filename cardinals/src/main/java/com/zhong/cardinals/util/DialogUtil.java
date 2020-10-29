@@ -1,17 +1,18 @@
 package com.zhong.cardinals.util;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.zhong.cardinals.App;
 import com.zhong.cardinals.GetPictureActivity;
@@ -24,7 +25,7 @@ import com.zhong.cardinals.R;
 
 public class DialogUtil {
     //获取拍照的Dialog
-    public static Dialog getPictureDialog(final Activity activity) {
+    public static Dialog getPictureDialog(final AppCompatActivity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setItems(App.getInstance().getResources().getStringArray(R.array.picture), new DialogInterface.OnClickListener() {
             @Override
@@ -59,7 +60,7 @@ public class DialogUtil {
      * @param negativeListener 取消操作
      * @return
      */
-    public static Dialog getDialog(Activity activity, String title, @NonNull String message, @NonNull DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener) {
+    public static Dialog getDialog(AppCompatActivity activity, String title, @NonNull String message, @NonNull DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener) {
 
         return getDialog(activity, title, message, App.getInstance().getString(R.string.str_confirm), positiveListener, App.getInstance().getString(R.string.str_cancel), negativeListener);
 
@@ -75,7 +76,7 @@ public class DialogUtil {
      * @param negativeListener 取消操作
      * @return
      */
-    public static Dialog getDialog(Activity activity, String title, @NonNull String message, String positiveStr, @NonNull DialogInterface.OnClickListener positiveListener, String negativeStr, DialogInterface.OnClickListener negativeListener) {
+    public static Dialog getDialog(AppCompatActivity activity, String title, @NonNull String message, String positiveStr, @NonNull DialogInterface.OnClickListener positiveListener, String negativeStr, DialogInterface.OnClickListener negativeListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         if (!TextUtils.isEmpty(title)) {
             builder.setTitle(title);
@@ -192,7 +193,7 @@ public class DialogUtil {
        }
    */
     //等待Dialog
-    public static ProgressDialog getProgressDialog(Activity activity, String title, String message) {
+    public static ProgressDialog getProgressDialog(AppCompatActivity activity, String title, String message) {
         ProgressDialog dialog = new ProgressDialog(activity);
         if (!TextUtils.isEmpty(title)) {
             dialog.setTitle(title);
@@ -205,7 +206,7 @@ public class DialogUtil {
 
 
     //底部dialog
-    public static void showBottomDialog(final Activity activity, View view) {
+    public static void showBottomDialog(final AppCompatActivity activity, View view) {
 
 
         final AlertDialog dialog = new AlertDialog.Builder(activity).setCancelable(true).create();
@@ -225,14 +226,14 @@ public class DialogUtil {
 
     }
 
-    public static AlertDialog getCustomDialog(final Activity activity, View view) {
+    public static AlertDialog getCustomDialog(final AppCompatActivity activity, View view) {
         final AlertDialog.Builder dialog = new AlertDialog.Builder(activity).setCancelable(true);
         dialog.setView(view);
         return dialog.create();
     }
 
 
-    public static Dialog showSingleItemDialog(Activity activity, String title, int itemsId, int checkedItem, DialogInterface.OnClickListener onClickListener) {
+    public static Dialog showSingleItemDialog(AppCompatActivity activity, String title, int itemsId, int checkedItem, DialogInterface.OnClickListener onClickListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         if (!TextUtils.isEmpty(title)) {
             builder.setTitle(title);
@@ -241,7 +242,7 @@ public class DialogUtil {
         return builder.show();
     }
 
-    public static Dialog showItemDialog(Activity activity, String title, int itemsId, DialogInterface.OnClickListener onClickListener) {
+    public static Dialog showItemDialog(AppCompatActivity activity, String title, int itemsId, DialogInterface.OnClickListener onClickListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         if (!TextUtils.isEmpty(title)) {
             builder.setTitle(title);
@@ -250,7 +251,7 @@ public class DialogUtil {
         return builder.show();
     }
 
-    public static Dialog showItemDialog(Activity activity, String title, String[] itemsId, DialogInterface.OnClickListener onClickListener) {
+    public static Dialog showItemDialog(AppCompatActivity activity, String title, String[] itemsId, DialogInterface.OnClickListener onClickListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         if (!TextUtils.isEmpty(title)) {
             builder.setTitle(title);

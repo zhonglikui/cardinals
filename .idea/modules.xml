@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android-cardinals.iml" filepath="$PROJECT_DIR$/android-cardinals.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cardinals/android-cardinals-cardinals.iml" filepath="$PROJECT_DIR$/.idea/modules/cardinals/android-cardinals-cardinals.iml" group="cardinals/cardinals" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cardinals.iml" filepath="$PROJECT_DIR$/.idea/modules/cardinals.iml" group="cardinals" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/cardinals-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/cardinals-app.iml" group="cardinals/app" />
       <module fileurl="file://$PROJECT_DIR$/cardinals/cardinals-cardinals.iml" filepath="$PROJECT_DIR$/cardinals/cardinals-cardinals.iml" />
     </modules>
   </component>

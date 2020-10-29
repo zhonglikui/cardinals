@@ -2,9 +2,8 @@ package com.zhong.cardinals.sample.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.AppCompatEditText
 import android.view.View
-
+import androidx.appcompat.widget.AppCompatEditText
 import com.zhong.cardinals.mvp.MvpActivity
 import com.zhong.cardinals.sample.MainActivity
 import com.zhong.cardinals.sample.R

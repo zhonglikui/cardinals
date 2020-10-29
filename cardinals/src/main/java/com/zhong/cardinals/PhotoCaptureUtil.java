@@ -1,6 +1,5 @@
 package com.zhong.cardinals;
 
-import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -15,6 +14,8 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -36,11 +37,11 @@ public class PhotoCaptureUtil {
     /*
      * 拍照
      */
-    public static Uri photoCapture(Activity activity, int requstCode) {
+    public static Uri photoCapture(AppCompatActivity activity, int requstCode) {
         Uri mCaptureUri = null;
         if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
             try {
-                mCaptureUri = Uri.fromFile(new File(getFileDir(), "pic_" + String.valueOf(System.currentTimeMillis()) +
+                mCaptureUri = Uri.fromFile(new File(getFileDir(), "pic_" + System.currentTimeMillis() +
                         ".jpg"));
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, mCaptureUri);
@@ -59,7 +60,7 @@ public class PhotoCaptureUtil {
     /*
      * 本地图片
      */
-    public static void photoLocation(Activity activity, int requstCode) {
+    public static void photoLocation(AppCompatActivity activity, int requstCode) {
         try {
             Intent intent = new Intent(Intent.ACTION_PICK, null);
             intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
@@ -110,7 +111,7 @@ public class PhotoCaptureUtil {
      * @return
      */
 
-    public static void startPhotoCrop(Activity activity, String path, int requstCode) {
+    public static void startPhotoCrop(AppCompatActivity activity, String path, int requstCode) {
         Intent intent = new Intent(activity, PhotoCropActivity.class);
         intent.putExtra("path", path);
         activity.startActivityForResult(intent, requstCode);
@@ -141,10 +142,7 @@ public class PhotoCaptureUtil {
         File dir = new File(dirString);
         if (!dir.exists()) {
             return dir.mkdirs();
-        } else if (!dir.isDirectory()) {
-            return false;
-        }
-        return true;
+        } else return dir.isDirectory();
     }
 
     /**
@@ -171,7 +169,7 @@ public class PhotoCaptureUtil {
             bmp.compress(Bitmap.CompressFormat.JPEG, options, os);
         }
         try {
-            file = new File(getFileDir(), "IMG_" + String.valueOf(System.currentTimeMillis()) + ".jpg");
+            file = new File(getFileDir(), "IMG_" + System.currentTimeMillis() + ".jpg");
             fos = new FileOutputStream(file);
             fos.write(os.toByteArray());
         } catch (IOException e) {

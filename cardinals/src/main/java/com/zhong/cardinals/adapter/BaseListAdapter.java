@@ -5,6 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,12 +17,12 @@ import java.util.List;
 public abstract class BaseListAdapter<T> extends BaseAdapter implements ParentAdapter<T> {
 
     public static final int INVALID_ITEM_VIEW_ID = -1;
-    private Activity mActivity;
+    private AppCompatActivity mActivity;
     private List<T> mList;
     private int itemViewId;
 
 
-    public BaseListAdapter(Activity activity, int itemViewId) {
+    public BaseListAdapter(AppCompatActivity activity, int itemViewId) {
         this.mActivity = activity;
         this.itemViewId = itemViewId;
         mList = new ArrayList<>();

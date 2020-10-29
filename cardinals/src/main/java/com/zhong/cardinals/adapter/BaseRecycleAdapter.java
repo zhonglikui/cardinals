@@ -1,9 +1,11 @@
 package com.zhong.cardinals.adapter;
 
 import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +18,11 @@ import java.util.List;
 public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<RecycleViewHolder> implements ParentAdapter<T> {
     protected onItemClickListener onItemClickListener;
     protected onItemLongClickListener onItemLongClickListener;
-    private Activity mActivity;
+    private AppCompatActivity mActivity;
     private int mLayoutId;
     private List<T> mList;
 
-    public BaseRecycleAdapter(Activity activity, int layoutId) {
+    public BaseRecycleAdapter(AppCompatActivity activity, int layoutId) {
         this.mActivity = activity;
         this.mLayoutId = layoutId;
         this.mList = new ArrayList<>();
