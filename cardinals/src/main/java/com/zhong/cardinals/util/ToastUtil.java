@@ -1,7 +1,8 @@
 package com.zhong.cardinals.util;
 
-import android.support.annotation.StringRes;
 import android.widget.Toast;
+
+import androidx.annotation.StringRes;
 
 import com.zhong.cardinals.App;
 

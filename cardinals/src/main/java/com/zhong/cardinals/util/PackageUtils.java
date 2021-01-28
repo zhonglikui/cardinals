@@ -1,18 +1,18 @@
 package com.zhong.cardinals.util;
 
 import android.app.ActivityManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
+import androidx.core.content.pm.PackageInfoCompat;
+
 import com.zhong.cardinals.App;
 
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -143,22 +143,6 @@ public class PackageUtils {
         return null;
     }
 
-    /**
-     * @deprecated 可以参考： https://blog.csdn.net/axi295309066/article/details/56123954
-     * 判断当前应用是否在前端运行
-     *
-     * @param context Contex对象
-     * @return 当前应用是否在前端运行
-     */
-    public static boolean isAppOnForeground(Context context) {
-        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningTaskInfo> tasks = am.getRunningTasks(1);
-        if (!tasks.isEmpty()) {
-            ComponentName topActivity = tasks.get(0).topActivity;
-            return topActivity.getPackageName().equals(context.getPackageName());
-        }
-        return false;
-    }
 
 
     /**
@@ -185,6 +169,10 @@ public class PackageUtils {
         } else {
             return false;
         }
+
+    }
+
+    public static PackageInfoCompat getPackageInfo() {
 
     }
 

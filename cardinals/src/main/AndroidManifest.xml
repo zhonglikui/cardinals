@@ -13,8 +13,6 @@
         android:networkSecurityConfig="@xml/network_security_config"
 
         android:supportsRtl="true">
-        <activity android:name=".PhotoCropActivity" />
-        <activity android:name=".GetPictureActivity" />
 
         <!--   <provider
                android:name="android.support.v4.content.FileProvider"

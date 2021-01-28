@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/android-cardinals.iml" filepath="$PROJECT_DIR$/android-cardinals.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cardinals/cardinals-cardinals.iml" filepath="$PROJECT_DIR$/cardinals/cardinals-cardinals.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-cardinals.iml" filepath="$PROJECT_DIR$/android-cardinals.iml" group="cardinals" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="cardinals/app" />
+      <module fileurl="file://$PROJECT_DIR$/cardinals/cardinals-cardinals.iml" filepath="$PROJECT_DIR$/cardinals/cardinals-cardinals.iml" group="cardinals/cardinals" />
     </modules>
   </component>
 </project>

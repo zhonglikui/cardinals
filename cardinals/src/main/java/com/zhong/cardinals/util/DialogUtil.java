@@ -4,17 +4,16 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+
 import com.zhong.cardinals.App;
-import com.zhong.cardinals.GetPictureActivity;
 import com.zhong.cardinals.R;
 
 /**
@@ -23,31 +22,6 @@ import com.zhong.cardinals.R;
  */
 
 public class DialogUtil {
-    //获取拍照的Dialog
-    public static Dialog getPictureDialog(final Activity activity) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setItems(App.getInstance().getResources().getStringArray(R.array.picture), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (SDUtil.isExists()) {
-                    if (which == 1) {
-                        Intent intent = new Intent(activity, GetPictureActivity.class);
-                        intent.putExtra(GetPictureActivity.IMAGE_TYPE, GetPictureActivity.IMAGE_CAPTURE);
-                        activity.startActivityForResult(intent, GetPictureActivity.IMAGE_CAPTURE);
-                    } else if (which == 0) {
-                        Intent intent = new Intent(activity, GetPictureActivity.class);
-                        intent.putExtra(GetPictureActivity.IMAGE_TYPE, GetPictureActivity.IMAGE_LOCATION);
-                        activity.startActivityForResult(intent, GetPictureActivity.IMAGE_LOCATION);
-                    }
-
-                } else {
-                    ToastUtil.showShort(App.getInstance().getString(R.string.permission_sd));
-
-                }
-            }
-        });
-        return builder.show();
-    }
 
     /**
      * 默认样式的dialog
