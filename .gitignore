@@ -39,7 +39,7 @@ captures/
 .idea/gradle.xml
 .idea/dictionaries
 .idea/libraries
-.idea/caches/*
+.idea/caches/*.ser
 
 # Keystore files
 *.jks

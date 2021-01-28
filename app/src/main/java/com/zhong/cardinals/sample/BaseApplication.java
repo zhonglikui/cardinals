@@ -32,6 +32,6 @@ public class BaseApplication extends MultiDexApplication {
                 });
 
         Cardinals.init(builder, this);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
     }
 }
