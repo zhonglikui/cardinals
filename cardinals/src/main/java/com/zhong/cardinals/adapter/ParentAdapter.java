@@ -12,13 +12,13 @@ import java.util.List;
 interface ParentAdapter<T> {
     Activity getActivity();
 
-    List<T> getListAll();
+    List<T> getList();
 
     void addList(List<T> list);
 
     void addItem(T item);
 
-    void addItem(int index, T item);
+    void insertItem(int index, T item);
 
     void removeItem(T item);
 

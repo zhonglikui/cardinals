@@ -16,14 +16,13 @@ public abstract class BaseListAdapter<T> extends BaseAdapter implements ParentAd
 
     public static final int INVALID_ITEM_VIEW_ID = -1;
     private Activity mActivity;
-    private List<T> mList;
+    private List<T> mList = new ArrayList<>();
     private int itemViewId;
 
 
     public BaseListAdapter(Activity activity, int itemViewId) {
         this.mActivity = activity;
         this.itemViewId = itemViewId;
-        mList = new ArrayList<>();
     }
 
     @Override
@@ -32,16 +31,17 @@ public abstract class BaseListAdapter<T> extends BaseAdapter implements ParentAd
     }
 
     @Override
-    public List<T> getListAll() {
+    public List<T> getList() {
         return mList;
     }
 
     @Override
     public void addList(List<T> list) {
-        if (list != null) {
+        if (list != null && list.size() > 0) {
             mList.addAll(list);
             notifyDataSetChanged();
         }
+
     }
 
     @Override
@@ -53,7 +53,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter implements ParentAd
     }
 
     @Override
-    public void addItem(int index, T item) {
+    public void insertItem(int index, T item) {
         if (item != null && index >= 0) {
             mList.add(index, item);
             notifyDataSetChanged();

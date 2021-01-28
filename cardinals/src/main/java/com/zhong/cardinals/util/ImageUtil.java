@@ -63,7 +63,7 @@ public class ImageUtil {
         int w = options.outWidth;
         int beWidth = w / maxWidth;
         int beHeight = h / maxHeight;
-        int be = beWidth < beHeight ? beWidth : beHeight;
+        int be = Math.min(beWidth, beHeight);
 
         if (be <= 0) {
             be = 1;

@@ -12,12 +12,12 @@ public abstract class MvpPresenter<V extends MvpView> {
     }
 
     //绑定
-    public void attachView(V view) {
+    void attachView(V view) {
         this.view = view;
     }
 
     //解绑
-    public void detachView() {
+    void detachView() {
         view = null;
     }
 

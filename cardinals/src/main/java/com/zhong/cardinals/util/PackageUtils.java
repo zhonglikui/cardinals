@@ -7,8 +7,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
-import androidx.core.content.pm.PackageInfoCompat;
-
 import com.zhong.cardinals.App;
 
 import java.io.IOException;
@@ -144,7 +142,6 @@ public class PackageUtils {
     }
 
 
-
     /**
      * 当前启动的是否是主进程
      *
@@ -172,8 +169,15 @@ public class PackageUtils {
 
     }
 
-    public static PackageInfoCompat getPackageInfo() {
-
+    public static PackageInfo getPackageInfo(String packageName) {
+        PackageManager packageManager = App.getInstance().getContext().getPackageManager();
+        PackageInfo info = null;
+        try {
+            info = packageManager.getPackageInfo(packageName, PackageManager.GET_GIDS);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return info;
     }
 
 
