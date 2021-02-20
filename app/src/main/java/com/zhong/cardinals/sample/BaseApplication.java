@@ -4,8 +4,8 @@ package com.zhong.cardinals.sample;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.multidex.MultiDexApplication;
 
-import com.zhong.cardinals.Builder;
 import com.zhong.cardinals.Cardinals;
+import com.zhong.cardinals.ConfigBuilder;
 import com.zhong.cardinals.net.NetInterface;
 
 /**
@@ -18,7 +18,7 @@ public class BaseApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        Builder builder = new Builder();
+        ConfigBuilder builder = new ConfigBuilder();
         builder.setDefaultLogTag("zhong")
                 .setNoProxy(false)
                 .setShowLog(true)

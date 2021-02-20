@@ -3,23 +3,21 @@ package com.zhong.cardinals.sample.login
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.widget.AppCompatEditText
 import com.zhong.cardinals.mvp.MvpActivity
-import com.zhong.cardinals.sample.MainActivity
 import com.zhong.cardinals.sample.R
+import com.zhong.cardinals.sample.databinding.ActivityLoginBinding
+import com.zhong.cardinals.sample.main.MainActivity
 import com.zhong.cardinals.sample.mode.UserInfo
 import com.zhong.cardinals.util.ToastUtil
 
 class LoginActivity : MvpActivity<LoginView, LoginPresenter>(), LoginView, View.OnClickListener {
-    private var etPhone: AppCompatEditText? = null
-    private var etPassword: AppCompatEditText? = null
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setTitle(R.string.str_login)
-        etPhone = findViewById(R.id.et_phone)
-        etPassword = findViewById(R.id.et_password)
         findViewById<View>(R.id.bt_login).setOnClickListener(this)
     }
 
@@ -59,8 +57,8 @@ class LoginActivity : MvpActivity<LoginView, LoginPresenter>(), LoginView, View.
     override fun onClick(v: View) {
         when (v.id) {
             R.id.bt_login -> {
-                val phone = etPhone!!.text.toString()
-                val password = etPassword!!.text.toString()
+                val phone = binding.etPhone.text.toString()
+                val password = binding.etPassword.text.toString()
                 presenter.login(phone, password)
             }
         }

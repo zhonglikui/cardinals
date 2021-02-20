@@ -4,13 +4,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.zhong.cardinals.sample.MainActivity">
+    tools:context="com.zhong.cardinals.sample.main.MainActivity">
 
-    <Button
-        android:id="@+id/bt_main"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-        android:layout_width="wrap_content"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_line" />
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_demo"
+            style="@style/mainTab"
+            android:text="@string/tab1" />
+
+        <RadioButton
+            android:id="@+id/rb_market"
+            style="@style/mainTab"
+            android:text="@string/tab2" />
+
+        <RadioButton
+            android:id="@+id/rb_account"
+            style="@style/mainTab"
+            android:text="@string/tab3" />
+    </RadioGroup>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,5 +1,6 @@
 package com.zhong.cardinals.util;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.zhong.cardinals.Cardinals;
@@ -18,7 +19,11 @@ public class Logger {
     static {
         isShowLog = Cardinals.getInstance().isShowLog();
         mTag = Cardinals.getInstance().getDefaultLogTag();
+        if (TextUtils.isEmpty(mTag)) {
+            mTag = "Cardinals";
+        }
     }
+
 
 
     public static void i(String msg) {

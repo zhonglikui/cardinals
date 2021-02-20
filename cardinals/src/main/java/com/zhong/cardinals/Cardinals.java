@@ -13,7 +13,7 @@ public class Cardinals {
     private static String host;
     private static NetInterface netInterface;
 
-    public static void init(Builder builder, Application application) {
+    public static void init(ConfigBuilder builder, Application application) {
         isDebug = builder.isDebug;
         isShowLog = builder.isShowLog;
         isNoProxy = builder.isNoProxy;

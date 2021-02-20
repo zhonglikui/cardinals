@@ -16,8 +16,8 @@
     <!--权限-->
     <string name="permission_sd">请在设置中打开SD卡读写权限</string>
     <string name="permission_camera">请在设置中打开相机权限</string>
-     <string name="permission_audio">请在设置中打开录音权限</string>
-     <string name="permission_camera_audio">请在设置中打开摄像头和录音权限</string>-->
+    <string name="permission_audio">请在设置中打开录音权限</string>
+    <string name="permission_camera_audio">请在设置中打开摄像头和录音权限</string>-->
     <string name="network_disconnected">网络断开</string>
 
 </resources>

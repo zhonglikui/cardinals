@@ -12,11 +12,13 @@
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_phone"
         android:layout_width="match_parent"
+        android:hint="@string/login_hint"
         android:layout_height="wrap_content" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_password"
         android:layout_width="match_parent"
+        android:hint="@string/login_hint"
         android:layout_height="wrap_content" />
 
     <androidx.appcompat.widget.AppCompatButton

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">cardinals</string>
+    <string name="tab1">tab1</string>
+    <string name="tab2">tab2</string>
+    <string name="tab3">tab3</string>
+    <string name="login_hint">输入任意内容</string>
+
 </resources>

@@ -2,14 +2,14 @@ package com.zhong.cardinals.sample
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.zhong.cardinals.App
+import com.zhong.cardinals.base.BaseActivity
 import com.zhong.cardinals.sample.login.LoginActivity
 import com.zhong.cardinals.util.Logger
 import com.zhong.cardinals.util.ToastUtil
 
-class SplashActivity : AppCompatActivity() {
-    private val INTERVAL_TIME = 5 * 1000
+class SplashActivity : BaseActivity() {
+    private val INTERVAL_TIME = 3 * 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,10 +35,5 @@ class SplashActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }, INTERVAL_TIME.toLong())
-    }
-
-    override fun onPause() {
-        super.onPause()
-        ToastUtil.showLong("onPause")
     }
 }

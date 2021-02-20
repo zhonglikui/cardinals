@@ -121,7 +121,7 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter<Recycle
         }
     }
 
-    abstract void convert(int position, RecycleViewHolder holder, T item);
+    protected abstract void convert(int position, RecycleViewHolder holder, T item);
 
     @Override
     public int getItemCount() {
