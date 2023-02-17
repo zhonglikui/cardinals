@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/android-cardinals.iml" filepath="$PROJECT_DIR$/android-cardinals.iml" group="cardinals" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="cardinals/app" />
-      <module fileurl="file://$PROJECT_DIR$/cardinals/cardinals-cardinals.iml" filepath="$PROJECT_DIR$/cardinals/cardinals-cardinals.iml" group="cardinals/cardinals" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cardinals.iml" filepath="$PROJECT_DIR$/.idea/modules/cardinals.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/cardinals.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/cardinals.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/cardinals.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/cardinals.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/cardinals.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/cardinals.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/cardinals.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/cardinals.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cardinals/cardinals.cardinals.iml" filepath="$PROJECT_DIR$/.idea/modules/cardinals/cardinals.cardinals.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cardinals/cardinals.cardinals.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/cardinals/cardinals.cardinals.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cardinals/cardinals.cardinals.main.iml" filepath="$PROJECT_DIR$/.idea/modules/cardinals/cardinals.cardinals.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cardinals/cardinals.cardinals.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/cardinals/cardinals.cardinals.unitTest.iml" />
     </modules>
   </component>
 </project>
