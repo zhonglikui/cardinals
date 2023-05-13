@@ -2,15 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    ​
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    ​
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    ​
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    ​
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    ​
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
@@ -21,7 +16,7 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.demo.DemoDetailActivity"></activity>
+        <activity android:name=".main.demo.DemoDetailActivity"/>
         <activity android:name=".main.MainActivity" />
         <activity
             android:name=".SplashActivity"

@@ -3,11 +3,11 @@
 buildscript {
     ext.kotlin_version = '1.8.0'
     repositories {
-        jcenter()
+        mavenCentral()
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.1'
+        classpath 'com.android.tools.build:gradle:8.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         //classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0' //
 
@@ -18,7 +18,7 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
+        mavenCentral()
         google()
     }
 }
