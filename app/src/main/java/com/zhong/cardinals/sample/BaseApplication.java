@@ -13,7 +13,7 @@ import com.zhong.cardinals.net.NetInterface;
  */
 
 public class BaseApplication extends MultiDexApplication {
-    private static final String HOST = "http://host/";
+    private static final String HOST = "http://host/path?param";
 
     @Override
     public void onCreate() {
