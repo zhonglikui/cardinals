@@ -32,7 +32,6 @@ android {
         includeInApk true
         includeInBundle true
     }
-//    repositories{ flatDir{ dirs "libs" } }
     namespace 'com.zhong.cardinals.sample'
     buildToolsVersion '33.0.0'
 }
