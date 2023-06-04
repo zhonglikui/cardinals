@@ -4,7 +4,7 @@ package com.zhong.cardinals.sample.mode
  * Created by zhong on 2017/3/28.
  */
 
-class UserInfo {
+class  UserInfo {
     var userId: Long = 0//": 307111,
     var nick: String? = null//": "xxx",  //用户昵称
     var isNew: Boolean = false//": false,  //只有老用户能用这个登录

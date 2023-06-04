@@ -3,6 +3,11 @@ package com.zhong.cardinals.sample.login
 import android.text.TextUtils
 
 import com.zhong.cardinals.mvp.MvpPresenter
+import com.zhong.cardinals.net.NetWorkClient
+import com.zhong.cardinals.sample.API
+import com.zhong.cardinals.sample.mode.PasswordLogin
+import com.zhong.cardinals.security.Encrypt
+import com.zhong.cardinals.security.EncryptByMD5
 
 /**
  * Created by Mr.zhong on 2017/9/19.
@@ -17,7 +22,7 @@ class LoginPresenter : MvpPresenter<LoginView>() {
         } else {
             view.onSuccess(null)
 
-            /*PasswordLogin passwordLogin = new PasswordLogin();
+            PasswordLogin passwordLogin = new PasswordLogin();
             Encrypt encrypt = new EncryptByMD5();
             passwordLogin.setPassword(encrypt.encrypt(password));
             passwordLogin.setPhone(phoneNumber);
@@ -57,7 +62,7 @@ class LoginPresenter : MvpPresenter<LoginView>() {
                     getView().closeDialog();
                     getView().onSuccess(null);
                 }
-            });*/
+            });
         }
     }
 }
