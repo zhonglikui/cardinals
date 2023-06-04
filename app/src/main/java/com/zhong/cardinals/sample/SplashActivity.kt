@@ -23,7 +23,7 @@ class SplashActivity : BaseActivity() {
                 val scheme = uri.scheme
                 val name = uri.getQueryParameter("name")
                 ToastUtil.showLong("参数 name：" + name!!)
-                Logger.i("host=$host ; scheme=$scheme ; name=$name")
+//                Logger.i("host=$host ; scheme=$scheme ; name=$name")
             }
         }
     }
