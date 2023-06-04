@@ -41,7 +41,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':cardinals')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-//    api(name: "TradeApi_release_v1.7-2020-09-23", ext: "aar")
 
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
